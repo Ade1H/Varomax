@@ -39,107 +39,117 @@ const VaromaxAbout = () => {
       </section>
 
       {/* Standards Section */}
-      <section style={{
-        backgroundImage: 'url(/back.jpeg)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        border: '1px solid rgba(255, 255, 255, 0.2)',
-        padding: '2.5rem 2rem',
-        marginBottom: '2.5rem',
-        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
-        overflow: 'hidden',
-        position: 'relative'
-      }}>
-        <div style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: 'rgba(11, 49, 38, 0.85)',
-          zIndex: 1
-        }}></div>
-        
-        <div style={{
-          maxWidth: '1200px',
-          margin: '0 auto',
-          position: 'relative',
-          zIndex: 2
+ <section style={{
+  backgroundImage: 'url(/back.jpeg)',
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  backgroundRepeat: 'no-repeat',
+  border: '1px solid rgba(255, 255, 255, 0.2)',
+  padding: 'clamp(1.5rem, 3vw, 2.5rem) clamp(1rem, 2.5vw, 2rem)',
+  marginBottom: '2.5rem',
+  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
+  overflow: 'hidden',
+  position: 'relative'
+}}>
+  <div style={{
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    background: 'rgba(11, 49, 38, 0.85)',
+    zIndex: 1
+  }}></div>
+  
+  <div style={{
+    maxWidth: '1200px',
+    margin: '0 auto',
+    position: 'relative',
+    zIndex: 2
+  }}>
+    <h2 style={{
+      color: '#ffffff',
+      fontSize: 'clamp(1.3rem, 3vw, 1.75rem)',
+      fontWeight: 700,
+      textAlign: 'center',
+      marginBottom: 'clamp(1.5rem, 2.5vw, 2rem)'
+    }}>
+      {t('aboutPage.standards.title')}
+    </h2>
+    
+    <div style={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+      gap: 'clamp(1rem, 2vw, 1.5rem)'
+    }}>
+      {Array.isArray(t('aboutPage.standards.items', { returnObjects: true })) && 
+        t('aboutPage.standards.items', { returnObjects: true }).map((item, index) => (
+        <div key={index} style={{
+          background: 'rgba(16, 77, 60, 0.7)',
+          borderRadius: '16px',
+          padding: 'clamp(1.1rem, 2vw, 1.5rem)',
+          border: '1px solid rgba(255, 255, 255, 0.15)',
+          transition: 'all 0.3s ease',
+          textAlign: 'center',
+          backdropFilter: 'blur(4px)'
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.background = 'rgba(16, 77, 60, 0.9)';
+          e.currentTarget.style.borderColor = 'rgba(129, 199, 132, 0.4)';
+          e.currentTarget.style.transform = 'translateY(-4px)';
+          e.currentTarget.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.3)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.background = 'rgba(16, 77, 60, 0.7)';
+          e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.15)';
+          e.currentTarget.style.transform = 'translateY(0)';
+          e.currentTarget.style.boxShadow = 'none';
+        }}
+        onTouchStart={(e) => {
+          e.currentTarget.style.background = 'rgba(16, 77, 60, 0.9)';
+          e.currentTarget.style.borderColor = 'rgba(129, 199, 132, 0.4)';
+          e.currentTarget.style.transform = 'scale(0.98)';
+        }}
+        onTouchEnd={(e) => {
+          e.currentTarget.style.background = 'rgba(16, 77, 60, 0.7)';
+          e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.15)';
+          e.currentTarget.style.transform = 'scale(1)';
         }}>
-          <h2 style={{
-            color: '#ffffff',
-            fontSize: '1.75rem',
-            fontWeight: 700,
-            textAlign: 'center',
-            marginBottom: '2rem'
-          }}>
-            {t('aboutPage.standards.title')}
-          </h2>
-          
           <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '1.5rem'
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: 'clamp(40px, 5vw, 48px)',
+            height: 'clamp(40px, 5vw, 48px)',
+            borderRadius: '50%',
+            background: 'rgba(129, 199, 132, 0.2)',
+            marginBottom: 'clamp(0.75rem, 1.5vw, 1rem)'
           }}>
-            {t('aboutPage.standards.items', { returnObjects: true }).map((item, index) => (
-              <div key={index} style={{
-                background: 'rgba(16, 77, 60, 0.7)',
-                borderRadius: '16px',
-                padding: '1.5rem',
-                border: '1px solid rgba(255, 255, 255, 0.15)',
-                transition: 'all 0.3s ease',
-                textAlign: 'center',
-                backdropFilter: 'blur(4px)'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(16, 77, 60, 0.9)';
-                e.currentTarget.style.borderColor = 'rgba(129, 199, 132, 0.4)';
-                e.currentTarget.style.transform = 'translateY(-4px)';
-                e.currentTarget.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.3)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'rgba(16, 77, 60, 0.7)';
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.15)';
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = 'none';
-              }}>
-                <div style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '48px',
-                  height: '48px',
-                  borderRadius: '50%',
-                  background: 'rgba(129, 199, 132, 0.2)',
-                  marginBottom: '1rem',
-                  fontSize: '1.5rem'
-                }}>
-                  <span style={{ color: '#81c784', fontSize: '1.5rem' }}>✓</span>
-                </div>
-                
-                <h3 style={{
-                  color: '#81c784',
-                  fontSize: '1.1rem',
-                  fontWeight: 700,
-                  marginBottom: '0.5rem'
-                }}>
-                  {item.title}
-                </h3>
-                
-                <p style={{
-                  color: 'rgba(255, 255, 255, 0.9)',
-                  fontSize: '0.95rem',
-                  lineHeight: 1.6,
-                  margin: 0
-                }}>
-                  {item.desc}
-                </p>
-              </div>
-            ))}
+            <span style={{ color: '#81c784', fontSize: 'clamp(1.2rem, 2vw, 1.5rem)' }}>✓</span>
           </div>
+          
+          <h3 style={{
+            color: '#81c784',
+            fontSize: 'clamp(0.95rem, 1.2vw, 1.1rem)',
+            fontWeight: 700,
+            marginBottom: 'clamp(0.3rem, 0.8vw, 0.5rem)'
+          }}>
+            {item.title}
+          </h3>
+          
+          <p style={{
+            color: 'rgba(255, 255, 255, 0.9)',
+            fontSize: 'clamp(0.85rem, 1vw, 0.95rem)',
+            lineHeight: 1.6,
+            margin: 0
+          }}>
+            {item.desc}
+          </p>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* Why Natural Section */}
       <section className="why-natural">
