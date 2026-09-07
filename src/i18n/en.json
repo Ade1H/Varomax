@@ -1,0 +1,362 @@
+{
+
+"vsViagraPage": {
+  "title": "Varomax vs Viagra",
+  "subtitle": "Natural support for men's performance, made properly and sold honestly.",
+  "introduction": {
+    "text1": "If you are weighing up Varomax against Viagra, here is the honest starting point. Viagra is a prescription medicine (the active drug is sildenafil). Varomax is a natural, herbal food supplement you can buy without a prescription. They are not the same thing, and one does not replace the other.",
+    "text2": "What Varomax offers is a natural route for men who would rather skip the synthetic, prescription path, with support for both firmer erections and lasting longer. Below is a straight side by side, then where each one actually makes sense."
+  },
+  "badges": [
+    "Thai-FDA Registered",
+    "Herbal",
+    "Lab-Tested",
+    "60-Day Money-Back"
+  ],
+  "comparison": {
+    "feature": "Feature",
+    "varomax": "Varomax",
+    "viagra": "Viagra",
+    "rows": [
+      {
+        "feature": "Skip the prescription entirely",
+        "varomax": "Yes",
+        "viagra": "No"
+      },
+      {
+        "feature": "Last longer, not just get hard",
+        "varomax": "Yes",
+        "viagra": "No"
+      },
+      {
+        "feature": "Stay natural, no synthetic drug",
+        "varomax": "Yes",
+        "viagra": "No"
+      },
+      {
+        "feature": "Discreet, no doctor's appointment",
+        "varomax": "Yes",
+        "viagra": "Sort of"
+      },
+      {
+        "feature": "A clinically proven medicine",
+        "varomax": "No",
+        "viagra": "Yes"
+      }
+    ]
+  },
+  "keyMessage": {
+    "text": "Viagra wins on one thing: it is a clinically proven prescription drug, and that is no small thing. If that is exactly what you want, see your GP. But if you want the natural route, no prescription, support for lasting longer, discreet delivery, and easier on the wallet, Varomax is built for you."
+  },
+  "howItWorks": {
+    "title": "How Varomax works",
+    "items": [
+      {
+        "title": "Works in ~30 min",
+        "desc": "Faster than a capsule you swallow."
+      },
+      {
+        "title": "Supports flow & stamina",
+        "desc": "Herbal extracts support blood flow and lasting longer."
+      }
+    ]
+  },
+  "viagraNotOnly": {
+    "title": "Viagra is not your only option",
+    "text1": "Viagra pulled off something clever. It convinced a whole generation that one little blue pill is the only answer, so most men never look past it. It is a good medicine. It is also a synthetic, prescription-only drug that does a single job: erections.",
+    "text2": "There is another way. A natural, no-prescription option that supports firmer erections and helps you last longer, working with your own physiology instead of a prescription pad. If you would rather skip the doctor and the synthetic drug, that is Varomax."
+  },
+  "medicalDisclaimer": {
+    "title": "One honest point.",
+    "text": "Viagra is a clinically proven prescription medicine. Varomax is a food supplement that supports your own physiology, not a drug, and not a substitute for medical care. If your ED came on suddenly or will not shift, see a GP first, as it can be an early warning for heart or circulation problems."
+  },
+  "faq": {
+    "title": "Varomax vs Viagra: your questions",
+    "items": [
+      {
+        "question": "Is Varomax the same as Viagra?",
+        "answer": "No. Viagra is a prescription medicine (sildenafil); Varomax is a herbal food supplement. Different categories, different ingredients, bought in different ways. Varomax is the no-prescription, natural option."
+      },
+      {
+        "question": "Can I take Varomax instead of Viagra?",
+        "answer": "Varomax is a supplement, not a substitute for a medicine a doctor has prescribed. If you have been prescribed Viagra, follow that advice. If you are choosing a natural option without a prescription, Varomax is a reasonable starting point. Do not swap or combine prescribed medicines without speaking to your doctor."
+      },
+      {
+        "question": "Is Varomax a natural Viagra?",
+        "answer": "\"Natural Viagra\" is a popular phrase, but it is not accurate in the strict sense: Varomax is a herbal supplement, not sildenafil. It supports erections and stamina naturally rather than acting as a synthetic drug. The appeal is the natural, no-prescription route, not a copy of the medicine."
+      },
+      {
+        "question": "Can I take Varomax and Viagra together?",
+        "answer": "Do not combine a supplement with a prescription ED medicine without talking to your doctor or pharmacist first. This matters most if you take nitrates or blood-pressure medication, or have a heart condition."
+      },
+      {
+        "question": "Is it safe with heart or blood-pressure medication?",
+        "answer": "Check with your doctor or pharmacist first. Varomax is a food supplement rather than a medicine, but ingredients that support blood flow can still matter when you are on cardiovascular medication. When in doubt, ask before you start."
+      }
+    ]
+  },
+"footer": {
+  "disclaimer": "This is a food supplement and is not intended to diagnose, cure, or prevent any disease. Always consult your doctor before starting any new supplement.",
+  "badges": {
+    "fda": "Thai FDA-Registered",
+    "herbal": "Herbal Formula",
+    "lab": "Lab-Tested"
+  },
+  "copyright": "© 2026 Varomax. All rights reserved."
+}
+},
+
+    "aboutPage": {
+  "title": "About Varomax",
+  "tagline": "Natural support for men's performance, made properly and sold honestly.",
+  "mission": {
+    "text1": "Most men chasing better performance get pushed towards one of two things: a synthetic prescription drug, with the GP visit and the side effects, or a dodgy, unregulated pill off some forecourt shelf that hides what is actually in it. We did not like either option.",
+    "text2": "Varomax exists to give men a third one: an honest, regulated, fully transparent natural route – supplements you can actually read the label of. Varomax supports firmer erections and helps you last longer.",
+    "note": "We are not a pharmacy, and we do not pretend to be. These are food supplements that work with your own physiology, not medicines. We would rather say that plainly than over-promise, because in this corner of the market, trust is the only thing worth having."
+  },
+  "standards": {
+    "title": "Standards you can check",
+    "items": [
+      {
+        "title": "Made in Thailand",
+        "desc": "Produced in Thailand, home to many of the botanicals in the formula."
+      },
+      {
+        "title": "Thai-FDA Registered",
+        "desc": "A registered herbal formula, No. 30-1-13758-5-0069, made to regulated standards."
+      },
+      {
+        "title": "Herbal",
+        "desc": "Plant-based actives, no synthetic prescription compounds, and non-habit forming."
+      },
+      {
+        "title": "Lab-Tested",
+        "desc": "A quality-checked formula with a fully disclosed ingredient list. No proprietary blends."
+      },
+      {
+        "title": "Discreet Delivery",
+        "desc": "Plain, unbranded packaging. What you order stays your business."
+      },
+      {
+        "title": "60-Day Money-Back",
+        "desc": "Not satisfied? A full refund within 60 days, with no awkward questions."
+      }
+    ]
+  },
+  "whyNatural": {
+    "title": "Why we went natural",
+    "text1": "So we built the opposite of a hidden pill. Every active in Varomax is printed on the label, in full, with no proprietary blends to duck behind. You see exactly what you are taking, and how much.",
+    "text2": "Varomax is sublingual: it dissolves under the tongue, so the herbal extracts absorb directly rather than being broken down in the gut. That is why it tends to work faster than a capsule you swallow – in about 30 minutes – and why we built the product this way instead of as another bottle of pills.",
+    "text3": "If you want the full side-by-side, see Varomax vs Viagra."
+  }
+},
+  "nav": {
+    "home": "Home",
+    "shop": "Shop",
+    "about": "About",
+    "contact": "Contact",
+    "checkout": "Checkout",
+    "vsViagra": "Varomax vs Viagra",
+    "cart": "Cart"
+  },
+  "contact": {
+    "title": " Contact Us",
+    "subtitle": "Have questions? We'd love to hear from you!",
+    "name": "Full Name",
+    "email": "Email Address",
+    "message": "Message",
+    "send": "Send Message ",
+    "success": "✅ Thank you for your message! We'll get back to you soon.",
+    "placeholder": {
+      "name": "John Doe",
+      "email": "john@example.com",
+      "message": "How can we help you?"
+    }
+  },
+  "footer": {
+  "disclaimer": "This is a food supplement and is not intended to diagnose, cure, or prevent any disease. Always consult your doctor before starting any new supplement.",
+  "badges": {
+    "fda": "Thai FDA-Registered",
+    "herbal": "Herbal Formula",
+    "lab": "Lab-Tested"
+  },
+  "copyright": "© 2026 Varomax. All rights reserved."
+},
+"home": {
+  "hero": {
+    "title": "Varomax – Natural Support for Stronger Erections and Lasting Longer",
+    "subtitle": "Welcome to Varomax. Your path to enhanced pleasure.",
+    "badges": {
+      "fda": "Thai FDA-Registered",
+      "herbal": "Herbal Formula",
+      "shipping": "Discreet Worldwide Shipping",
+      "guarantee": "60-Day Money-Back Guarantee"
+    },
+    "stats": {
+      "feel": "Feel it in about",
+      "lasts": "Effect lasts up to",
+      "guarantee": "Money-back guarantee",
+      "herbal": "Herbal, no synthetics"
+    },
+    "cta": "Buy 2, Get 1 Free!"
+  },
+  "about": {
+    "title": "A natural men's performance supplement you can trust",
+    "description": "We are committed to providing a safe and natural solution for men who want to improve their intimate wellbeing.",
+    "cards": {
+      "fda": "Thai FDA Registered",
+      "fdaDesc": "Registered herbal formula, made to regulated standards.",
+      "herbal": "Herbal Formula",
+      "herbalDesc": "Plant-based actives, no synthetic Rx compounds.",
+      "lab": "Lab-Tested Quality",
+      "labDesc": "Quality control in laboratory to ensure purity and potency."
+    }
+  },
+  "detail": {
+    "title": "About Varomax",
+    "description": "A natural sublingual formula for men's performance and stamina, made with time-tested herbal extracts. No synthetic compounds. Non-habit forming. Discreet, plain packaging.",
+    "certificate": "Made in Thailand · Thai FDA No: 30-1-13758-5-0069",
+    "ingredients": "Ingredients",
+    "ingredientsList": [
+      "Cordyceps",
+      "Ginseng extract",
+      "Reishi Mushroom",
+      "Oyster extract",
+      "Coenzyme Q10",
+      "Zinc Amino Acid Chelate"
+    ],
+    "howToUse": "How to use",
+    "howToUseDesc": "Do not exceed one per day."
+  },
+  "whyChoose": {
+    "title": "Why choose Varomax over synthetic ED pills",
+    "features": {
+      "natural": "Natural herbal ingredients",
+      "naturalDesc": "Cordyceps, Ginseng extract, Reishi mushroom, Oyster extract, Coenzyme Q10 and Zinc Amino Acid Chelate.",
+      "gentler": "Gentler than synthetic ED pills",
+      "gentlerDesc": "Natural ingredients make Varomax gentler than synthetic ED alternatives.",
+      "energy": "Energy, Varomax and vitality",
+      "energyDesc": "Beyond performance, the botanicals also support energy and overall wellbeing.",
+      "noPrescription": "No Prescription Needed",
+      "noPrescriptionDesc": "Available over the counter, without a doctor's prescription.",
+      "sustainable": "Plant-based and sustainable",
+      "sustainableDesc": "Plant-based actives are more environmentally friendly than synthetic drug production.",
+      "fast": "Fast sublingual absorption",
+      "fastDesc": "Absorbed under the tongue, so it works faster than ordinary capsules."
+    }
+  },
+  "faq": {
+    "title": "Varomax – Your questions answered",
+    "subtitle": "Everything you want to know before you try Varomax.",
+    "items": [
+      {
+        "question": "How do I take Varomax?",
+        "answer": "Place one troche under your tongue about 30 minutes before. It dissolves and absorbs sublingually, so it acts faster than a capsule you swallow. Do not exceed one troche per day."
+      },
+      {
+        "question": "How fast does it work, and how long does it last?",
+        "answer": "Most users feel it within about 30 minutes, and the effect can last several hours. Individual response varies from person to person."
+      },
+      {
+        "question": "Is it safe? Are there side effects?",
+        "answer": "Varomax is a natural herbal food supplement and is non-habit forming. As with any supplement, if you take medication or have a heart condition, check with your doctor first. It is not a substitute for medical advice."
+      },
+      {
+        "question": "Do I need a prescription?",
+        "answer": "No. Varomax is available over the counter, without a doctor's prescription."
+      },
+      {
+        "question": "Is delivery discreet?",
+        "answer": "Yes. Every order ships in plain, unbranded packaging with no mention of the contents, and we ship discreetly worldwide."
+      },
+      {
+        "question": "Is Varomax a natural alternative to Viagra?",
+        "answer": "Varomax is a herbal food supplement, not a medicine, so it does not replace any prescription treatment. What it gives you is a natural, no-prescription option for supporting stronger erections without synthetic drugs. It uses plant extracts rather than sildenafil, and you can buy it discreetly with no doctor's appointment."
+      },
+      {
+        "question": "Can Varomax help me last longer in bed?",
+        "answer": "Varomax is formulated to support both erection quality and stamina, which is unusual – most products target one or the other. It is not a numbing spray and not a drug, so it works with your own physiology rather than masking sensation. A lot of men use it as much for the lasting-longer side as the erection side."
+      }
+    ],
+    "medicalNote": "One honest point. A supplement is support, not a substitute for medical care. If your ED came on suddenly, see a GP first – it can be an early warning for heart or circulation problems. For the everyday dips, stress, tiredness, age, a drink too many – a natural formula is a sensible place to start."
+  }
+},
+  "shopPage": {
+  "title": "SHOP",
+  "offerText": "Buy 2, get 1 free on every product.",
+  "discreetText": "Discreet packaging!",
+  "addToCart": "Add to cart",
+  "price": "Price"
+
+  },
+  "products": {
+  "varomax": {
+    "name": "Varomax",
+    "packSize": "10 capsules",
+    "category": "Dietary Supplements"
+  },
+  "varomax4": {
+    "name": "Varomax",
+    "packSize": "4 capsules",
+    "category": "Dietary Supplements"
+  }
+},
+"cartPage": {
+  "title": "Your cart",
+  "items": "items",
+  "empty": "Your cart is empty.",
+  "remove": "Remove",
+  "total": "Total to pay:",
+  "checkout": "Proceed to checkout"
+},
+"checkoutPage": {
+  "title": "Checkout",
+  "orderSummary": "Order Summary",
+  "product": "Product",
+  "quantity": "Quantity",
+  "price": "Price",
+  "subtotal": "Subtotal",
+  "shipping": "Shipping",
+  "total": "Total",
+  "placeOrder": "Place Order",
+  "backToCart": "Back to Cart",
+  "form": {
+    "title": "Shipping Information",
+    "fullName": "Full Name",
+    "email": "Email Address",
+    "address": "Shipping Address",
+    "city": "City",
+    "postalCode": "Postal Code",
+    "country": "Country",
+    "phone": "Phone Number",
+    "notes": "Order Notes (Optional)",
+    "placeholder": {
+      "fullName": "John Doe",
+      "email": "john@example.com",
+      "address": "123 Main Street",
+      "city": "Bangkok",
+      "postalCode": "10110",
+      "phone": "081-234-5678",
+      "notes": "Any special delivery instructions..."
+    }
+  },
+  "validation": {
+    "required": "This field is required",
+    "email": "Please enter a valid email address",
+    "phone": "Please enter a valid phone number"
+  },
+  "success": {
+    "title": "🎉 Order Placed Successfully!",
+    "message": "Thank you for your order! We'll send you a confirmation email shortly.",
+    "continue": "Continue Shopping"
+  },
+  "empty": {
+    "title": "Your cart is empty",
+    "message": "Add some products to your cart before checking out.",
+    "shopNow": "Shop Now"
+  }
+},
+  "common": {
+    "loading": "Loading..."
+  }
+}

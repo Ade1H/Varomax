@@ -105,25 +105,35 @@
 }
 
 /* Cart Button */
+/* Cart Button - Always Light */
+/* Cart Button - Clean & Light */
 .cart {
   text-decoration: none;
-  color: #fff;
-  background: rgba(26, 58, 107, 0.6);
-  border: 1px solid rgba(42, 90, 154, 0.6);
+  color: rgba(255, 255, 255, 0.9);
   padding: 0.5rem 1rem;
   border-radius: 6px;
   font-weight: 500;
-  backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
   gap: 0.5rem;
   flex-shrink: 0;
   transition: all 0.3s ease;
+  border: 1px solid transparent;
 }
 
 .cart:hover {
-  background: rgba(26, 58, 107, 0.8);
-  transform: scale(1.05);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* 👇 Prevent any dark state */
+.cart:active,
+.cart.active,
+.cart:focus {
+  color: rgba(255, 255, 255, 0.9);
+  background: transparent !important;
+  border-color: transparent !important;
 }
 
 /* Mobile Responsive */

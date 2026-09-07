@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export default function Cart({ cart, totalItems, totalPrice, handleDecrease, handleAddToCart, handleRemove }) {
+  const { t } = useTranslation();
+
   return (
     <div 
       style={{
@@ -20,7 +23,7 @@ export default function Cart({ cart, totalItems, totalPrice, handleDecrease, han
         alignItems: 'center',
         gap: '8px'
       }}>
-         Your cart ({totalItems} items)
+        {t('cartPage.title')} ({totalItems} {t('cartPage.items')})
       </h3>
 
       {cart.length === 0 ? (
@@ -30,7 +33,7 @@ export default function Cart({ cart, totalItems, totalPrice, handleDecrease, han
           padding: '2rem 0',
           textAlign: 'center'
         }}>
-          Your cart is empty.
+          {t('cartPage.empty')}
         </p>
       ) : (
         <>
@@ -114,7 +117,7 @@ export default function Cart({ cart, totalItems, totalPrice, handleDecrease, han
                     fontWeight: 600,
                     minWidth: '70px',
                     textAlign: 'right',
-                    color: '#0d7a5f',
+                    color: '#040404ff',
                     fontSize: '16px'
                   }}>
                     ฿{item.price * item.quantity}
@@ -124,14 +127,14 @@ export default function Cart({ cart, totalItems, totalPrice, handleDecrease, han
                     onClick={() => handleRemove(item.id)} 
                     style={{
                       background: 'transparent',
-                      color: '#ef9a9a',
+                      color: '#f40808ff',
                       border: 'none',
                       cursor: 'pointer',
                       fontSize: '14px',
                       padding: '4px 8px'
                     }}
                   >
-                    ✕ Remove
+                    ✕ {t('cartPage.remove')}
                   </button>
                 </div>
               </li>
@@ -152,9 +155,9 @@ export default function Cart({ cart, totalItems, totalPrice, handleDecrease, han
               fontSize: '20px',
               color: 'var(--text-h)'
             }}>
-              Total to pay:{' '}
+              {t('cartPage.total')}{' '}
               <span style={{
-                color: '#0d7a5f',
+                color: '#010201ff',
                 fontSize: '24px'
               }}>
                 ฿{totalPrice}
@@ -174,7 +177,7 @@ export default function Cart({ cart, totalItems, totalPrice, handleDecrease, han
                 display: 'inline-block'
               }}
             >
-              💳 Proceed to checkout
+              💳 {t('cartPage.checkout')}
             </Link>
           </div>
         </>

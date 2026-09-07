@@ -2,13 +2,14 @@ import { useState, useEffect } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Shop from './components/Shop'; // Använd denna istället
-import FAQ from './components/FAQ';
+// import FAQ from './compon/ents/FAQ';
 import Checkout from './components/Checkout';
 import VaromaxVsViagra from './components/VaromaxVsViagra';
 import Home from './components/Home';
 import About from './components/About';
 import Cart from './components/Cart';
 import Footer from './components/Footer';
+import Contact from './components/Contact';
 // Ta bort importen av VaromaxLanding
 import { products } from './data/products';
 
@@ -72,10 +73,12 @@ export default function App() {
         } />
 
         {/* Varomax vs Viagra Comparison Page */}
+        <Route path="/contact" element={<Contact />} />
         <Route path="/vs-viagra" element={<VaromaxVsViagra />} />
         <Route path="/Home" element={<Home />} />
         <Route path="/About" element={<About />} />
         <Route path="/Cart" element={
+          
           <Cart 
             cart={cart} 
             totalItems={totalItems} 
