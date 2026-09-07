@@ -309,54 +309,34 @@
   "total": "Total to pay:",
   "checkout": "Proceed to checkout"
 },
+
 "checkoutPage": {
   "title": "Checkout",
-  "orderSummary": "Order Summary",
-  "product": "Product",
-  "quantity": "Quantity",
-  "price": "Price",
-  "subtotal": "Subtotal",
-  "shipping": "Shipping",
-  "total": "Total",
-  "placeOrder": "Place Order",
-  "backToCart": "Back to Cart",
+  "backToShop": "← Back to shop",
+  "yourOrder": "Your order",
+  "items": "items",
+  "totalToPay": "Total to pay:",
   "form": {
-    "title": "Shipping Information",
     "fullName": "Full Name",
     "email": "Email Address",
     "address": "Shipping Address",
     "city": "City",
-    "postalCode": "Postal Code",
-    "country": "Country",
-    "phone": "Phone Number",
-    "notes": "Order Notes (Optional)",
-    "placeholder": {
-      "fullName": "John Doe",
-      "email": "john@example.com",
-      "address": "123 Main Street",
-      "city": "Bangkok",
-      "postalCode": "10110",
-      "phone": "081-234-5678",
-      "notes": "Any special delivery instructions..."
-    }
+    "postalCode": "Postal Code"
   },
+  "submit": "Proceed to Stripe 💳",
   "validation": {
-    "required": "This field is required",
-    "email": "Please enter a valid email address",
-    "phone": "Please enter a valid phone number"
+    "required": "Please fill in all required fields."
   },
-  "success": {
-    "title": "🎉 Order Placed Successfully!",
-    "message": "Thank you for your order! We'll send you a confirmation email shortly.",
-    "continue": "Continue Shopping"
+  "error": {
+    "network": "A network error occurred. Please try again."
   },
-  "empty": {
-    "title": "Your cart is empty",
-    "message": "Add some products to your cart before checking out.",
-    "shopNow": "Shop Now"
+   "success": {  
+    "message": "Thank you for your order, {{name}}! A confirmation has been sent to {{email}}."
   }
 },
   "common": {
     "loading": "Loading..."
   }
+  
+  
 }

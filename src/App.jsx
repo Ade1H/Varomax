@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next'; // 👈 ADD THIS
 import Navbar from './components/Navbar';
 import Shop from './components/Shop'; // Använd denna istället
 // import FAQ from './compon/ents/FAQ';
@@ -14,6 +15,7 @@ import Contact from './components/Contact';
 import { products } from './data/products';
 
 export default function App() {
+  const { t } = useTranslation(); // 👈 ADD THIS
   const [cart, setCart] = useState(() => {
     const savedCart = localStorage.getItem('Varomax_cart');
     return savedCart ? JSON.parse(savedCart) : [];
@@ -54,7 +56,10 @@ export default function App() {
   const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
   const handleCompleteOrder = (formData) => {
-    alert(`Thank you for your order, ${formData.name}! A confirmation has been sent to ${formData.email}.`);
+    alert(t('checkoutPage.success.message', { 
+      name: formData.name, 
+      email: formData.email 
+    }));
     setCart([]);
   };
 
