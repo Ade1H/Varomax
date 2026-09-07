@@ -100,10 +100,14 @@ const VaromaxAbout = () => {
     
     <div style={{
       display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+      gridTemplateColumns: 'repeat(3, 1fr)',
       gap: '1.5rem'
     }}>
       {[
+         {
+          title: 'Made in Thailand',
+          desc: 'Produced in Thailand, home to many of the botanicals in the formula.'
+        },
         {
           title: 'Thai-FDA Registered',
           desc: 'A registered herbal formula, No. 30-1-13758-5-0069, made to regulated standards.'
@@ -116,10 +120,7 @@ const VaromaxAbout = () => {
           title: 'Lab-Tested',
           desc: 'A quality-checked formula with a fully disclosed ingredient list. No proprietary blends.'
         },
-        {
-          title: 'Made in Thailand',
-          desc: 'Produced in Thailand, home to many of the botanicals in the formula.'
-        },
+       
         {
           title: 'Discreet Delivery',
           desc: 'Plain, unbranded packaging. What you order stays your business.'

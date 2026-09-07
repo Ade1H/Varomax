@@ -35,7 +35,7 @@ export default function ComparePage() {
   border: '1px solid rgba(45, 106, 79, 0.5)',
   backdropFilter: 'blur(10px)'
 }}>
-  Buy 2, get 1 free · Free worldwide shipping over €100
+  Buy 2, get 1 free · Free worldwide shipping over 100
 </div> */}
 
         {/* Hero Section */}
@@ -65,7 +65,8 @@ export default function ComparePage() {
           </p>
         </section>
 
-        {/* Badges */}
+ 
+     {/* Badges */}
         <div style={{
           display: 'flex',
           flexWrap: 'wrap',
@@ -75,9 +76,9 @@ export default function ComparePage() {
         }}>
           {['Thai-FDA Registered', '100% Herbal', 'Lab-Tested', '60-Day Money-Back'].map((badge, i) => (
             <span key={i} style={{
-              background: '#ffffff',
-              border: '1px solid #e9ecef',
-              color: '#1a1a2e',
+              background: 'rgba(129, 199, 132, 0.25)',
+              border: '1px solid #81c784',
+              color: '#2d6a4f',
               padding: '0.5rem 1.2rem',
               borderRadius: '20px',
               fontSize: '14px',
@@ -88,7 +89,6 @@ export default function ComparePage() {
             </span>
           ))}
         </div>
-
         {/* Main Comparison Table */}
       <div style={{
   overflowX: 'auto',
@@ -96,10 +96,13 @@ export default function ComparePage() {
   boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
   borderRadius: '20px'
 }}>
-  <table style={{
+ <table style={{
     width: '100%',
     borderCollapse: 'collapse',
-    background: 'rgba(11, 49, 38, 0.95)',
+    backgroundImage: 'linear-gradient(rgba(11, 49, 38, 0.9), rgba(11, 49, 38, 0.9)), url(/back.jpeg)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
     borderRadius: '20px',
     overflow: 'hidden',
     color: '#ffffff',
@@ -118,7 +121,7 @@ export default function ComparePage() {
         ['Last longer, not just get hard', 'Yes', 'No'],
         ['Stay natural, no synthetic drug', 'Yes', 'No'],
         ['Discreet, no doctor\'s appointment', 'Yes', 'Sort of'],
-        ['Keep the cost down', 'from €22', 'Rx + visit'],
+        ['Keep the cost down', 'from ฿22', 'Rx + visit'],
         ['A clinically proven medicine', 'No', 'Yes']
       ].map((row, i) => (
         <tr key={i} style={{ borderBottom: i < 5 ? '1px solid rgba(255, 255, 255, 0.15)' : 'none' }}>
@@ -173,8 +176,11 @@ export default function ComparePage() {
         </div>
 
         {/* How Varomax Works */}
-      <section style={{
-  background: 'rgba(11, 49, 38, 0.95)',
+   <section style={{
+  backgroundImage: 'linear-gradient(rgba(11, 49, 38, 0.9), rgba(11, 49, 38, 0.9)), url(/back.jpeg)',
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  backgroundRepeat: 'no-repeat',
   borderRadius: '20px',
   border: '1px solid rgba(255, 255, 255, 0.2)',
   padding: '2.5rem 2rem',
@@ -240,8 +246,11 @@ export default function ComparePage() {
         </section>
 
         {/* Pricing Options */}
-        <section style={{
-  background: 'rgba(11, 49, 38, 0.95)',
+ <section style={{
+  backgroundImage: 'linear-gradient(rgba(11, 49, 38, 0.9), rgba(11, 49, 38, 0.9)), url(/back.jpeg)',
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  backgroundRepeat: 'no-repeat',
   borderRadius: '20px',
   border: '1px solid rgba(255, 255, 255, 0.2)',
   padding: '2rem',
@@ -294,11 +303,11 @@ export default function ComparePage() {
         fontWeight: 800, 
         color: '#81c784', 
         margin: '0.5rem 0' 
-      }}>€40</p>
+      }}>฿40</p>
       <p style={{ 
         fontSize: '0.9rem', 
         color: 'rgba(255, 255, 255, 0.7)' 
-      }}>€4.00 per lozenge, save 27%</p>
+      }}>฿4.00 per lozenge, save 27%</p>
     </div>
   </div>
   
@@ -333,8 +342,11 @@ export default function ComparePage() {
         </div>
 
         {/* FAQ Section */}
-       <section style={{
-  background: 'rgba(11, 49, 38, 0.95)',
+<section style={{
+  backgroundImage: 'linear-gradient(rgba(11, 49, 38, 0.9), rgba(11, 49, 38, 0.9)), url(/back.jpeg)',
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  backgroundRepeat: 'no-repeat',
   borderRadius: '20px',
   border: '1px solid rgba(255, 255, 255, 0.2)',
   padding: '1.75rem',

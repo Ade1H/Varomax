@@ -3,17 +3,19 @@ export const products = [
   id: 1,
   name: "Varomax",
   packSize: "10 capsules",
-  price: 33,
+  price: 900,
   category: "Dietary Supplements",
-  stripeLink: "https://buy.stripe.com/test_dinlänk1",
+  stripeLink: "https://buy.stripe.com/aFafZgfnd40qc6LemIfEk01",
   image: "/varomax-box.webp"
 },
-  // {
-  //   id: 2,
-  //   name: "Libidiol Max",
-  //   packSize: "90 capsules",
-  //   price: 69,
-  //   category: "Dietary Supplements",
-  //   stripeLink: "https://buy.stripe.com/test_dinlänk2"
-  // }
+{
+  id: 2,
+  name: "Varomax",
+  packSize: "4 capsules",
+  price: 400,
+  category: "Dietary Supplements",
+  stripeLink: "https://buy.stripe.com/aFafZgfnd40qc6LemIfEk01",
+  image: "/varomax-box.webp"
+},
+ 
 ];

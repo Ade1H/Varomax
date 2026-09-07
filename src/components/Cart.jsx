@@ -117,7 +117,7 @@ export default function Cart({ cart, totalItems, totalPrice, handleDecrease, han
                     color: '#0d7a5f',
                     fontSize: '16px'
                   }}>
-                    €{item.price * item.quantity}
+                    ฿{item.price * item.quantity}
                   </span>
 
                   <button 
@@ -157,7 +157,7 @@ export default function Cart({ cart, totalItems, totalPrice, handleDecrease, han
                 color: '#0d7a5f',
                 fontSize: '24px'
               }}>
-                €{totalPrice}
+                ฿{totalPrice}
               </span>
             </strong>
 

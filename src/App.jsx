@@ -63,10 +63,11 @@ export default function App() {
 
       <Routes>
         {/* Använd Shop istället för VaromaxLanding */}
-        <Route path="/" element={
+        <Route path="/" element={<Home />} />
+        <Route path="shop" element={
           <>
             <Shop products={products} onAddToCart={handleAddToCart} />
-            <FAQ />
+            {/* <FAQ /> */}
           </>
         } />
 

@@ -101,7 +101,7 @@ export default function Checkout({ cart, totalPrice, onBack, onComplete }) {
           Your order ({cart.reduce((sum, i) => sum + i.quantity, 0)} items)
         </h4>
         <p style={{ margin: 0, fontSize: '18px', color: '#000000' }}>
-          <strong>Total to pay: €{totalPrice}</strong>
+          <strong>Total to pay: ฿{totalPrice}</strong>
         </p>
       </div>
 

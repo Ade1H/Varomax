@@ -27,11 +27,26 @@ const VaromaxLanding = () => {
              <p className="subtitle" style={{ color: '#000000' }}>
   Welcome to Varomax. Your path to enhanced pleasure.
 </p>
-              <div className="badges">
-                <span className="badge">Thai FDA-Registered</span>
-                <span className="badge">100% Herbal Formula</span>
-                <span className="badge">Discreet Worldwide Shipping</span>
-                <span className="badge">60-Day Money-Back Guarantee</span>
+              <div className="badges" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', justifyContent: 'center' }}>
+                {[
+                  'Thai FDA-Registered', 
+                  '100% Herbal Formula', 
+                  'Discreet Worldwide Shipping', 
+                  '60-Day Money-Back Guarantee'
+                ].map((badgeText, index) => (
+                  <span key={index} style={{
+                    background: 'rgba(129, 199, 132, 0.25)',
+                    border: '1px solid #81c784',
+                    color: '#2d6a4f',
+                    padding: '0.5rem 1.2rem',
+                    borderRadius: '20px',
+                    fontSize: '14px',
+                    fontWeight: 600,
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.04)'
+                  }}>
+                    {badgeText}
+                  </span>
+                ))}
               </div>
               <div className="stats">
                 <div className="stat">
@@ -53,8 +68,47 @@ const VaromaxLanding = () => {
               </div>
               <button className="btn-hero" onClick={() => navigate('/')}>Buy 2, Get 1 Free!</button>
             </div>
+<div className="product-grid" style={{ display: 'flex', justifyContent: 'center' }}>
+  {heroProduct && (
+    <div className="product-item featured" style={{ textAlign: 'left', margin: 0, background: 'transparent', border: 'none', boxShadow: 'none', padding: '1rem', width: '100%', maxWidth: '360px', boxSizing: 'border-box' }}>
+      {heroProduct.badge && <div className="product-badge">{heroProduct.badge}</div>}
+      
+      {heroProduct.image && (
+        <img 
+          src={heroProduct.image} 
+          alt={heroProduct.name} 
+          style={{ width: '100%', height: '280px', objectFit: 'contain', borderRadius: '8px', marginBottom: '1.25rem', display: 'block' }} 
+        />
+      )}
 
-            <div className="product-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', justifyContent: 'center' }}>
+      <h3 style={{ margin: '0 0 0.5rem 0', fontSize: '20px', color: '#000000' }}>{heroProduct.name}</h3>
+      <p style={{ margin: '0 0 0.75rem 0', color: '#000000' }}>{heroProduct.description || heroProduct.category}</p>
+      
+      <div className="price" style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '0.75rem', color: '#000000' }}>฿{heroProduct.price} / pack</div>
+      
+      {heroProduct.packSize && (
+        <p className="pack-size" style={{ fontWeight: '500', color: '#000000', fontSize: '14px', margin: '0 0 1rem 0' }}>
+          {heroProduct.packSize}
+        </p>
+      )}
+
+      {heroProduct.features && heroProduct.features.length > 0 && (
+        <ul className="product-features" style={{ listStyle: 'none', padding: 0, margin: '0 0 1rem 0', textAlign: 'left' }}>
+          {heroProduct.features.map((feature, index) => (
+            <li key={index} style={{ marginBottom: '4px', color: '#000000', fontSize: '14px' }}>✓ {feature}</li>
+          ))}
+        </ul>
+      )}
+
+      <div className="product-card-buttons" style={{ display: 'flex', gap: '8px', marginTop: '1rem' }}>
+        <button className="btn-add" onClick={() => onAddToCart(heroProduct)} style={{ flex: 1 }}>
+          Add to cart
+        </button>
+      </div>
+    </div>
+  )}
+</div>
+            {/* <div className="product-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', justifyContent: 'center' }}>
   {products && products.map(product => (
     <div key={product.id} className="product-item featured" style={{ textAlign: 'left', margin: 0, background: 'transparent', border: 'none', boxShadow: 'none', padding: '1rem', width: '100%', maxWidth: '360px', boxSizing: 'border-box' }}>
       {product.badge && <div className="product-badge">{product.badge}</div>}
@@ -70,7 +124,7 @@ const VaromaxLanding = () => {
       <h3 style={{ margin: '0 0 0.5rem 0', fontSize: '20px', color: '#000000' }}>{product.name}</h3>
       <p style={{ margin: '0 0 0.75rem 0', color: '#000000' }}>{product.description || product.category}</p>
       
-      <div className="price" style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '0.75rem', color: '#000000' }}>€{product.price} / pack</div>
+      <div className="price" style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '0.75rem', color: '#000000' }}>฿{product.price} / pack</div>
       
       {product.packSize && (
         <p className="pack-size" style={{ fontWeight: '500', color: '#000000', fontSize: '14px', margin: '0 0 1rem 0' }}>
@@ -93,7 +147,7 @@ const VaromaxLanding = () => {
       </div>
     </div>
   ))}
-</div>
+</div> */}
           </div>
         </div>
       </section>
@@ -157,13 +211,37 @@ const VaromaxLanding = () => {
   Made in Thailand · Thai FDA No: 30-1-13758-5-0069
 </p>
     <h3 style={{ textAlign: 'center' }}>Ingredients</h3>
-    <ul className="ingredients" style={{ textAlign: 'center' ,color: "#14532D" }}>
-      <li style={{ textAlign: 'center' ,color: "#14532D" }}>Cordyceps</li>
-      <li style={{ textAlign: 'center' ,color: "#14532D" }}>Ginseng extract</li>
-      <li style={{ textAlign: 'center' ,color: "#14532D" }}>Reishi Mushroom</li>
-      <li style={{ textAlign: 'center' ,color: "#14532D" }}>Oyster extract</li>
-      <li style={{ textAlign: 'center' ,color: "#14532D" }}>Coenzyme Q10</li>
-      <li style={{ textAlign: 'center' ,color: "#14532D" }}>Zinc Amino Acid Chelate</li>
+ <ul className="ingredients" style={{ 
+      display: 'flex', 
+      flexWrap: 'wrap', 
+      gap: '0.75rem', 
+      justifyContent: 'center', 
+      listStyle: 'none', 
+      padding: 0, 
+      margin: '0 auto 20px',
+      maxWidth: '700px'
+    }}>
+      {[
+        'Cordyceps', 
+        'Ginseng extract', 
+        'Reishi Mushroom', 
+        'Oyster extract', 
+        'Coenzyme Q10', 
+        'Zinc Amino Acid Chelate'
+      ].map((ingredient, index) => (
+        <li key={index} style={{ 
+          background: 'rgba(129, 199, 132, 0.25)',
+          border: '1px solid #81c784',
+          color: '#2d6a4f',
+          padding: '0.5rem 1.2rem',
+          borderRadius: '20px',
+          fontSize: '14px',
+          fontWeight: 600,
+          boxShadow: '0 2px 8px rgba(0,0,0,0.04)'
+        }}>
+          {ingredient}
+        </li>
+      ))}
     </ul>
     <h3 style={{ textAlign: 'center' }}>How to use</h3>
     <p style={{ textAlign: "center", maxWidth: "700px", margin: "0 auto" }}>
