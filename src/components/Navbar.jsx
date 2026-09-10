@@ -37,7 +37,7 @@ export default function Navbar({ cartCount }) {
         </NavLink>
         <span style={{
           color: 'rgba(255, 255, 255, 0.9)',
-          fontSize: '1.2rem', // 👈 CHANGED from 0.85rem to 1.2rem
+          fontSize: '1.2rem',
           fontWeight: 600,
           letterSpacing: '1px',
           marginTop: '-8px',
@@ -108,7 +108,15 @@ export default function Navbar({ cartCount }) {
         >
           {t('nav.contact')}
         </NavLink>
-      </div>
+
+        <NavLink 
+          to="/Reseller" 
+          className={({ isActive }) => isActive ? 'active' : ''}
+          onClick={closeMenu}
+        >
+          {t('nav.reseller')}
+        </NavLink> 
+      </div> 
 
       {/* Right Side Actions (Cart & Language Switcher) */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>

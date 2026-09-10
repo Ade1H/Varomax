@@ -6,18 +6,25 @@ export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
+    isReseller: false,
+    companyName: '',
     message: ''
   });
   const [status, setStatus] = useState({ loading: false, success: null, error: null });
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value, type, checked } = e.target;
+    setFormData({ 
+      ...formData, 
+      [name]: type === 'checkbox' ? checked : value 
+    });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) {
-      alert(t('contact.fillFields') || 'Please fill in all required fields.');
+    if (!formData.name || !formData.email || !formData.phone || !formData.message || (formData.isReseller && !formData.companyName)) {
+      alert(t('contact.fillFields'));
       return;
     }
 
@@ -37,9 +44,9 @@ export default function Contact() {
       if (!response.ok) throw new Error(data.error || 'Failed to send message.');
 
       setStatus({ loading: false, success: t('contact.success'), error: null });
-      setFormData({ name: '', email: '', message: '' });
+      setFormData({ name: '', email: '', phone: '', isReseller: false, companyName: '', message: '' });
     } catch (error) {
-      console.error('Fel vid anrop till servern:', error);
+      console.error('Server error:', error);
       setStatus({ loading: false, success: null, error: t('contact.error') });
     }
   };
@@ -81,7 +88,7 @@ export default function Contact() {
       <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
         <div>
           <label style={{ display: 'block', marginBottom: '6px', fontSize: '14px', fontWeight: 600, color: '#000000' }}>
-            {t('contact.name')}
+            {t('contact.name')} *
           </label>
           <input 
             type="text" 
@@ -89,6 +96,7 @@ export default function Contact() {
             value={formData.name} 
             onChange={handleChange} 
             required 
+            placeholder={t('contact.placeholder.name')}
             style={{ 
               width: '100%', 
               padding: '10px 12px', 
@@ -103,33 +111,100 @@ export default function Contact() {
           />
         </div>
 
-        <div>
-          <label style={{ display: 'block', marginBottom: '6px', fontSize: '14px', fontWeight: 600, color: '#000000' }}>
-            {t('contact.email')}
-          </label>
+        <div style={{ display: 'flex', gap: '1rem' }}>
+          <div style={{ flex: 1 }}>
+            <label style={{ display: 'block', marginBottom: '6px', fontSize: '14px', fontWeight: 600, color: '#000000' }}>
+              {t('contact.email')} *
+            </label>
+            <input 
+              type="email" 
+              name="email" 
+              value={formData.email} 
+              onChange={handleChange} 
+              required 
+              placeholder={t('contact.placeholder.email')}
+              style={{ 
+                width: '100%', 
+                padding: '10px 12px', 
+                borderRadius: '6px', 
+                border: '1px solid #ccc', 
+                background: '#ffffff', 
+                color: '#000000',
+                fontSize: '15px',
+                outline: 'none',
+                boxSizing: 'border-box'
+              }}
+            />
+          </div>
+          <div style={{ flex: 1 }}>
+            <label style={{ display: 'block', marginBottom: '6px', fontSize: '14px', fontWeight: 600, color: '#000000' }}>
+              {t('contact.phone')} *
+            </label>
+            <input 
+              type="tel" 
+              name="phone" 
+              value={formData.phone} 
+              onChange={handleChange} 
+              required 
+              placeholder={t('contact.placeholder.message')}
+              style={{ 
+                width: '100%', 
+                padding: '10px 12px', 
+                borderRadius: '6px', 
+                border: '1px solid #ccc', 
+                background: '#ffffff', 
+                color: '#000000',
+                fontSize: '15px',
+                outline: 'none',
+                boxSizing: 'border-box'
+              }}
+            />
+          </div>
+        </div>
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '0.25rem' }}>
           <input 
-            type="email" 
-            name="email" 
-            value={formData.email} 
-            onChange={handleChange} 
-            required 
-            style={{ 
-              width: '100%', 
-              padding: '10px 12px', 
-              borderRadius: '6px', 
-              border: '1px solid #ccc', 
-              background: '#ffffff', 
-              color: '#000000',
-              fontSize: '15px',
-              outline: 'none',
-              boxSizing: 'border-box'
-            }}
+            type="checkbox" 
+            id="isReseller" 
+            name="isReseller" 
+            checked={formData.isReseller} 
+            onChange={handleChange}
+            style={{ width: '18px', height: '18px', cursor: 'pointer' }}
           />
+          <label htmlFor="isReseller" style={{ fontSize: '14px', fontWeight: 600, color: '#000000', cursor: 'pointer' }}>
+            {t('contact.isReseller')}
+          </label>
         </div>
+
+        {formData.isReseller && (
+          <div>
+            <label style={{ display: 'block', marginBottom: '6px', fontSize: '14px', fontWeight: 600, color: '#000000' }}>
+              {t('contact.companyName')} *
+            </label>
+            <input 
+              type="text" 
+              name="companyName" 
+              value={formData.companyName} 
+              onChange={handleChange} 
+              required={formData.isReseller}
+              style={{ 
+                width: '100%', 
+                padding: '10px 12px', 
+                borderRadius: '6px', 
+                border: '1px solid #ccc', 
+                background: '#ffffff', 
+                color: '#000000',
+                fontSize: '15px',
+                outline: 'none',
+                boxSizing: 'border-box'
+              }}
+            />
+          </div>
+        )}
 
         <div>
           <label style={{ display: 'block', marginBottom: '6px', fontSize: '14px', fontWeight: 600, color: '#000000' }}>
-            {t('contact.message')}
+            {t('contact.message')} *
           </label>
           <textarea 
             name="message" 
@@ -137,6 +212,7 @@ export default function Contact() {
             value={formData.message} 
             onChange={handleChange} 
             required 
+            placeholder={t('contact.placeholder.message')}
             style={{ 
               width: '100%', 
               padding: '10px 12px', 

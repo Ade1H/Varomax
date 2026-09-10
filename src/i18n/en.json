@@ -1,5 +1,35 @@
 {
-
+"reseller": {
+    "title": "Reseller",
+    "subtitle": "Sign in or become a customer below",
+    "signInTitle": "Sign In to Reseller Portal",
+    "emailLabel": "Email Address",
+    "passwordLabel": "Password",
+    "signInBtn": "Sign In",
+    "signingIn": "Signing in...",
+    "option2": "Want to be customer",
+    "loadingPortal": "Loading portal...",
+    "companyPortal": "Company Business Portal",
+    "privatePortal": "Private Customer Portal",
+    "signOut": "Sign Out",
+    "companyOrders": "Company Orders",
+    "recentOrders": "Recent Orders",
+    "noCompanyHistory": "No company purchase history found.",
+    "noOrdersYet": "You haven't placed any orders yet.",
+    "orderId": "Order ID",
+    "poNumber": "PO Number",
+    "total": "Total",
+    "payment": "Payment",
+    "fulfillment": "Fulfillment",
+    "date": "Date",
+    "notAvailable": "N/A",
+    "status": {
+      "paid": "Paid",
+      "pending": "Pending",
+      "processing": "Processing",
+      "completed": "Completed"
+    }
+  },
 "vsViagraPage": {
   "title": "Varomax vs Viagra",
   "subtitle": "Natural support for men's performance, made properly and sold honestly.",
@@ -157,16 +187,23 @@
     "contact": "Contact",
     "checkout": "Checkout",
     "vsViagra": "Varomax vs Viagra",
-    "cart": "Cart"
+    "cart": "Cart",
+    "reseller": "Reseller"
   },
-  "contact": {
-    "title": " Contact Us",
+ "contact": {
+    "title": "Contact Us",
     "subtitle": "Have questions? We'd love to hear from you!",
     "name": "Full Name",
     "email": "Email Address",
+    "phone": "Phone Number",
+    "isReseller": "I want to become a reseller / Company",
+    "companyName": "Company Name",
     "message": "Message",
-    "send": "Send Message ",
+    "send": "Send Message",
+    "sending": "Sending...",
     "success": "✅ Thank you for your message! We'll get back to you soon.",
+    "error": "Failed to send message. Please try again.",
+    "fillFields": "Please fill in all required fields.",
     "placeholder": {
       "name": "John Doe",
       "email": "john@example.com",
@@ -200,6 +237,7 @@
     },
     "cta": "Buy 2, Get 1 Free!"
   },
+  
   "about": {
     "title": "A natural men's performance supplement you can trust",
     "description": "We are committed to providing a safe and natural solution for men who want to improve their intimate wellbeing.",
@@ -311,29 +349,32 @@
 },
 
 "checkoutPage": {
-  "title": "Checkout",
-  "backToShop": "← Back to shop",
-  "yourOrder": "Your order",
-  "items": "items",
-  "totalToPay": "Total to pay:",
-  "form": {
-    "fullName": "Full Name",
-    "email": "Email Address",
-    "address": "Shipping Address",
-    "city": "City",
-    "postalCode": "Postal Code"
+    "title": "Checkout",
+    "backToShop": "← Back to shop",
+    "yourOrder": "Your order",
+    "items": "items",
+    "totalToPay": "Total to pay:",
+    "form": {
+      "fullName": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "address": "Shipping Address",
+      "city": "City",
+      "postalCode": "Postal Code",
+      "country": "Country"
+    },
+    "submit": "Proceed to Stripe 💳",
+    "validation": {
+      "required": "Please fill in all required fields."
+    },
+    "error": {
+      "network": "A network error occurred. Please try again.",
+      "serverError": "Server error occurred. Please try again."
+    },
+    "success": {
+      "message": "Thank you for your order, {{name}}! A confirmation has been sent to {{email}}."
+    }
   },
-  "submit": "Proceed to Stripe 💳",
-  "validation": {
-    "required": "Please fill in all required fields."
-  },
-  "error": {
-    "network": "A network error occurred. Please try again."
-  },
-   "success": {  
-    "message": "Thank you for your order, {{name}}! A confirmation has been sent to {{email}}."
-  }
-},
   "common": {
     "loading": "Loading..."
   }

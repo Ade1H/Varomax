@@ -3,7 +3,7 @@ export const products = [
   id: 1,
   name: "Varomax",
   packSize: "10 capsules",
-  price: 990,
+  price: 1,
   category: "Dietary Supplements",
   stripeLink: "https://buy.stripe.com/aFafZgfnd40qc6LemIfEk01",
   image: "/varomax-box.webp"

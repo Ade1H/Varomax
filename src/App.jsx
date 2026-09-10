@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next'; // 👈 ADD THIS
+import { Routes, Route } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import Navbar from './components/Navbar';
-import Shop from './components/Shop'; // Använd denna istället
-// import FAQ from './compon/ents/FAQ';
+import Shop from './components/Shop';
 import Checkout from './components/Checkout';
 import VaromaxVsViagra from './components/VaromaxVsViagra';
 import Home from './components/Home';
@@ -11,19 +10,28 @@ import About from './components/About';
 import Cart from './components/Cart';
 import Footer from './components/Footer';
 import Contact from './components/Contact';
-// Ta bort importen av VaromaxLanding
+import Register from './components/Register';
+import Dashboard from './components/Dashboard';
+import Reseller from './components/Reseller';
+
 import { products } from './data/products';
 
 export default function App() {
-  const { t } = useTranslation(); // 👈 ADD THIS
+  const { t } = useTranslation();
   const [cart, setCart] = useState(() => {
     const savedCart = localStorage.getItem('Varomax_cart');
     return savedCart ? JSON.parse(savedCart) : [];
   });
 
+  const [token, setToken] = useState(() => localStorage.getItem('auth_token'));
+
   useEffect(() => {
     localStorage.setItem('Varomax_cart', JSON.stringify(cart));
   }, [cart]);
+
+  const handleRegisterSuccess = () => {
+    setToken(localStorage.getItem('auth_token'));
+  };
 
   const handleAddToCart = (product) => {
     setCart(prevCart => {
@@ -68,22 +76,13 @@ export default function App() {
       <Navbar cartCount={totalItems} />
 
       <Routes>
-        {/* Använd Shop istället för VaromaxLanding */}
         <Route path="/" element={<Home />} />
-        <Route path="shop" element={
-          <>
-            <Shop products={products} onAddToCart={handleAddToCart} />
-            {/* <FAQ /> */}
-          </>
-        } />
-
-        {/* Varomax vs Viagra Comparison Page */}
+        <Route path="shop" element={<Shop products={products} onAddToCart={handleAddToCart} />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/vs-viagra" element={<VaromaxVsViagra />} />
         <Route path="/Home" element={<Home />} />
         <Route path="/About" element={<About />} />
         <Route path="/Cart" element={
-          
           <Cart 
             cart={cart} 
             totalItems={totalItems} 
@@ -93,8 +92,6 @@ export default function App() {
             handleRemove={handleRemove} 
           />
         } />
-
-        {/* Checkout Page */}
         <Route path="/checkout" element={
           <Checkout 
             cart={cart} 
@@ -102,6 +99,19 @@ export default function App() {
             onBack={() => {}} 
             onComplete={handleCompleteOrder} 
           />
+        } />
+        <Route path="/reseller" element={<Reseller />} />
+
+        {/* Portal renders Dashboard if token exists, otherwise shows Register page */}
+        <Route path="/portal" element={
+          token ? (
+            <Dashboard />
+          ) : (
+            <Register 
+              onRegisterSuccess={handleRegisterSuccess} 
+              onSwitchToLogin={() => {}} 
+            />
+          )
         } />
       </Routes>
 
