@@ -9,6 +9,12 @@ export default function Dashboard() {
     const fetchDashboardData = async () => {
       const token = localStorage.getItem('auth_token');
 
+      if (!token) {
+        setError('You are not signed in.');
+        setLoading(false);
+        return;
+      }
+
       try {
         const response = await fetch('https://varomax.nu/api/dashboard.php', {
           method: 'GET',
@@ -39,13 +45,38 @@ export default function Dashboard() {
     localStorage.removeItem('auth_token');
     localStorage.removeItem('account_type');
     localStorage.removeItem('user_id');
-    window.location.reload();
+    window.location.href = '/reseller';
   };
 
-  if (loading) return <div className="text-center py-10 text-gray-600">Loading portal...</div>;
-  if (error) return <div className="max-w-md mx-auto mt-10 p-4 bg-red-50 text-red-700 rounded">{error}</div>;
+  if (loading) {
+    return (
+      <div className="text-center py-10 text-gray-600">Loading portal...</div>
+    );
+  }
 
-  const isBusiness = data.account_type === 'business';
+  if (error) {
+    return (
+      <div className="max-w-md mx-auto mt-10 p-4 bg-red-50 text-red-700 rounded">
+        {error}
+      </div>
+    );
+  }
+
+  if (!data) {
+    return (
+      <div className="max-w-md mx-auto mt-10 p-4 bg-yellow-50 text-yellow-800 rounded">
+        No dashboard data available.
+      </div>
+    );
+  }
+
+  // Treat both 'business' and 'reseller' as company accounts
+  const isBusiness =
+    data.account_type === 'business' || data.account_type === 'reseller';
+
+  const ordersList = isBusiness
+    ? data.company_orders || []
+    : data.recent_orders || [];
 
   return (
     <div className="max-w-4xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-md border border-gray-100">
@@ -55,7 +86,7 @@ export default function Dashboard() {
         </h2>
         <div className="flex items-center gap-3">
           <span className="px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-semibold rounded-full uppercase">
-            {data.account_type} {isBusiness && `(${data.role})`}
+            {data.account_type} {isBusiness && data.role && `(${data.role})`}
           </span>
           <button
             onClick={handleLogout}
@@ -69,7 +100,7 @@ export default function Dashboard() {
       {isBusiness ? (
         <div>
           <h3 className="text-lg font-semibold text-gray-700 mb-4">Company Orders</h3>
-          {(!data.company_orders || data.company_orders.length === 0) ? (
+          {ordersList.length === 0 ? (
             <p className="text-gray-500">No company purchase history found.</p>
           ) : (
             <div className="overflow-x-auto">
@@ -85,26 +116,38 @@ export default function Dashboard() {
                   </tr>
                 </thead>
                 <tbody>
-                  {data.company_orders.map((order) => (
+                  {ordersList.map((order) => (
                     <tr key={order.id} className="hover:bg-gray-50 text-sm">
                       <td className="p-3 border-b font-medium">#{order.id}</td>
                       <td className="p-3 border-b">{order.po_number || 'N/A'}</td>
-                      <td className="p-3 border-b">{order.total_amount} {order.currency}</td>
                       <td className="p-3 border-b">
-                        <span className={`px-2 py-1 rounded text-xs font-semibold ${
-                          order.payment_status === 'paid' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'
-                        }`}>
+                        {order.total_amount} {order.currency}
+                      </td>
+                      <td className="p-3 border-b">
+                        <span
+                          className={`px-2 py-1 rounded text-xs font-semibold ${
+                            order.payment_status === 'paid'
+                              ? 'bg-green-100 text-green-700'
+                              : 'bg-yellow-100 text-yellow-700'
+                          }`}
+                        >
                           {order.payment_status}
                         </span>
                       </td>
                       <td className="p-3 border-b">
-                        <span className={`px-2 py-1 rounded text-xs font-semibold ${
-                          order.fulfillment_status === 'processing' ? 'bg-blue-100 text-blue-700' : 'bg-gray-100 text-gray-700'
-                        }`}>
+                        <span
+                          className={`px-2 py-1 rounded text-xs font-semibold ${
+                            order.fulfillment_status === 'processing'
+                              ? 'bg-blue-100 text-blue-700'
+                              : 'bg-gray-100 text-gray-700'
+                          }`}
+                        >
                           {order.fulfillment_status}
                         </span>
                       </td>
-                      <td className="p-3 border-b text-gray-400">{order.created_at}</td>
+                      <td className="p-3 border-b text-gray-400">
+                        {order.created_at}
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -115,7 +158,7 @@ export default function Dashboard() {
       ) : (
         <div>
           <h3 className="text-lg font-semibold text-gray-700 mb-4">Recent Orders</h3>
-          {(!data.recent_orders || data.recent_orders.length === 0) ? (
+          {ordersList.length === 0 ? (
             <p className="text-gray-500">You haven't placed any orders yet.</p>
           ) : (
             <div className="overflow-x-auto">
@@ -130,25 +173,37 @@ export default function Dashboard() {
                   </tr>
                 </thead>
                 <tbody>
-                  {data.recent_orders.map((order) => (
+                  {ordersList.map((order) => (
                     <tr key={order.id} className="hover:bg-gray-50 text-sm">
                       <td className="p-3 border-b font-medium">#{order.id}</td>
-                      <td className="p-3 border-b">{order.total_amount} {order.currency}</td>
                       <td className="p-3 border-b">
-                        <span className={`px-2 py-1 rounded text-xs font-semibold ${
-                          order.payment_status === 'paid' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'
-                        }`}>
+                        {order.total_amount} {order.currency}
+                      </td>
+                      <td className="p-3 border-b">
+                        <span
+                          className={`px-2 py-1 rounded text-xs font-semibold ${
+                            order.payment_status === 'paid'
+                              ? 'bg-green-100 text-green-700'
+                              : 'bg-yellow-100 text-yellow-700'
+                          }`}
+                        >
                           {order.payment_status}
                         </span>
                       </td>
                       <td className="p-3 border-b">
-                        <span className={`px-2 py-1 rounded text-xs font-semibold ${
-                          order.fulfillment_status === 'processing' ? 'bg-blue-100 text-blue-700' : 'bg-gray-100 text-gray-700'
-                        }`}>
+                        <span
+                          className={`px-2 py-1 rounded text-xs font-semibold ${
+                            order.fulfillment_status === 'processing'
+                              ? 'bg-blue-100 text-blue-700'
+                              : 'bg-gray-100 text-gray-700'
+                          }`}
+                        >
                           {order.fulfillment_status}
                         </span>
                       </td>
-                      <td className="p-3 border-b text-gray-400">{order.created_at}</td>
+                      <td className="p-3 border-b text-gray-400">
+                        {order.created_at}
+                      </td>
                     </tr>
                   ))}
                 </tbody>

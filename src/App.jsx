@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Navbar from './components/Navbar';
 import Shop from './components/Shop';
@@ -13,6 +13,9 @@ import Contact from './components/Contact';
 import Register from './components/Register';
 import Dashboard from './components/Dashboard';
 import Reseller from './components/Reseller';
+import ForgotPassword from './components/ForgotPassword';
+import ResetPassword from './components/ResetPassword';
+import AdminGate from './components/AdminGate';
 
 import { products } from './data/products';
 
@@ -37,7 +40,7 @@ export default function App() {
     setCart(prevCart => {
       const existing = prevCart.find(item => item.id === product.id);
       if (existing) {
-        return prevCart.map(item => 
+        return prevCart.map(item =>
           item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
         );
       }
@@ -64,9 +67,9 @@ export default function App() {
   const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
   const handleCompleteOrder = (formData) => {
-    alert(t('checkoutPage.success.message', { 
-      name: formData.name, 
-      email: formData.email 
+    alert(t('checkoutPage.success.message', {
+      name: formData.name,
+      email: formData.email
     }));
     setCart([]);
   };
@@ -77,41 +80,61 @@ export default function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="shop" element={<Shop products={products} onAddToCart={handleAddToCart} />} />
+        <Route path="/shop" element={<Shop products={products} onAddToCart={handleAddToCart} />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/vs-viagra" element={<VaromaxVsViagra />} />
         <Route path="/Home" element={<Home />} />
         <Route path="/About" element={<About />} />
-        <Route path="/Cart" element={
-          <Cart 
-            cart={cart} 
-            totalItems={totalItems} 
-            totalPrice={totalPrice} 
-            handleDecrease={handleDecrease} 
-            handleAddToCart={handleAddToCart} 
-            handleRemove={handleRemove} 
-          />
-        } />
-        <Route path="/checkout" element={
-          <Checkout 
-            cart={cart} 
-            totalPrice={totalPrice} 
-            onBack={() => {}} 
-            onComplete={handleCompleteOrder} 
-          />
-        } />
-        <Route path="/reseller" element={<Reseller />} />
 
-        {/* Portal renders Dashboard if token exists, otherwise shows Register page */}
-        <Route path="/portal" element={
-          token ? (
-            <Dashboard />
-          ) : (
-            <Register 
-              onRegisterSuccess={handleRegisterSuccess} 
-              onSwitchToLogin={() => {}} 
-            />
-          )
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
+
+        {/* 🔐 Register — protected by admin password */}
+        <Route
+          path="/register"
+          element={
+            <AdminGate>
+              <Register onRegisterSuccess={handleRegisterSuccess} />
+            </AdminGate>
+          }
+        />
+
+        {/* 🔒 Portal — only logged-in reseller */}
+        <Route
+          path="/portal"
+          element={
+            token ? (
+              <Dashboard />
+            ) : (
+              <Navigate to="/reseller" replace />
+            )
+          }
+        />
+
+        {/* Public login page */}
+        <Route
+          path="/reseller"
+          element={<Reseller onLoginSuccess={handleRegisterSuccess} />}
+        />
+
+        <Route path="/Cart" element={
+          <Cart
+            cart={cart}
+            totalItems={totalItems}
+            totalPrice={totalPrice}
+            handleDecrease={handleDecrease}
+            handleAddToCart={handleAddToCart}
+            handleRemove={handleRemove}
+          />
+        } />
+
+        <Route path="/checkout" element={
+          <Checkout
+            cart={cart}
+            totalPrice={totalPrice}
+            onBack={() => {}}
+            onComplete={handleCompleteOrder}
+          />
         } />
       </Routes>
 

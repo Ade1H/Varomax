@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom'; // 1. Added import
 
 export default function Checkout({ cart, totalPrice, onBack, onComplete }) {
   const { t } = useTranslation();
+  const navigate = useNavigate(); // 2. Initialize hook
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -72,8 +75,12 @@ export default function Checkout({ cart, totalPrice, onBack, onComplete }) {
         boxShadow: '0 4px 20px rgba(0,0,0,0.1)'
       }}
     >
+      {/* 3. Updated button handler to trigger routing */}
       <button 
-        onClick={onBack} 
+        onClick={() => {
+          if (onBack) onBack(); // Keeps optional state cleanup if needed
+          navigate('/shop');  // Adjust path to match your shop route (e.g., '/shop' or '/')
+        }} 
         style={{ 
           marginBottom: '1.5rem', 
           background: 'transparent', 

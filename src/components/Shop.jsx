@@ -21,6 +21,74 @@ export default function Shop({ onAddToCart, products = [] }) {
         }}>
           {t('shopPage.discreetText')}
         </p>
+
+        {/* Global Marketplace Banner */}
+        <div style={{ 
+          display: 'flex', 
+          flexDirection: 'column', 
+          alignItems: 'center', 
+          justifyContent: 'center', 
+          gap: '10px', 
+          marginBottom: '2rem',
+          padding: '1rem',
+          background: '#fafafa',
+          borderRadius: '8px',
+          border: '1px solid #e0e0e0',
+          maxWidth: '500px',
+          marginInline: 'auto'
+        }}>
+          <p style={{ margin: 0, fontSize: '1rem', fontWeight: 600, color: '#333' }}>
+  {t('shopPage.shopeeLazadaText')}
+</p>
+          <div style={{ display: 'flex', gap: '12px', width: '100%', maxWidth: '320px' }}>
+            <a 
+              href="https://www.lazada.co.th/shop/bullport-th?path=index.htm&lang=en&pageTypeId=1" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              style={{ 
+                flex: 1, 
+                textAlign: 'center', 
+                padding: '8px 12px', 
+                fontSize: '0.95rem', 
+                backgroundColor: '#0f146d', 
+                color: '#fff', 
+                textDecoration: 'none', 
+                borderRadius: '6px',
+                fontWeight: 'bold',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '6px'
+              }}
+            >
+              <img src="/lazada.png" alt="Lazada" style={{ height: '1.4em', objectFit: 'contain' }} /> Lazada
+            </a>
+            <a 
+              href="https://s.shopee.co.th/5AsKbTxjf6?share_channel_code=5" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              style={{ 
+                flex: 1, 
+                textAlign: 'center', 
+                padding: '8px 12px', 
+                fontSize: '0.95rem', 
+                backgroundColor: '#ffffff', 
+                color: '#ee4d2d', 
+                textDecoration: 'none', 
+                borderRadius: '6px',
+                fontWeight: 'bold',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '6px',
+                border: '1px solid #ee4d2d'
+              }}
+            >
+              <img src="/shopee.png" alt="Shopee" style={{ height: '1.6em', objectFit: 'contain' }} /> Shopee
+            </a>
+          </div>
+        </div>
+
         <div className="product-grid" style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center', alignItems: 'flex-start' }}>
           {products && products.map((product) => {
             const productKey = product.id === 1 ? 'varomax' : 'varomax4';
@@ -57,57 +125,9 @@ export default function Shop({ onAddToCart, products = [] }) {
                 )}
 
                 <div className="product-card-buttons" style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '8px', padding: '0px' }}>
-                  <button className="btn-add" onClick={() => onAddToCart(product)} style={{ width: '100%', padding: '8px', fontSize: '0.9rem' }}>
+                  <button className="btn-add" onClick={() => onAddToCart(product)} style={{ width: '100%', padding: '10px', fontSize: '0.95rem', cursor: 'pointer', background: '#0d7a5f', color: '#fff', border: 'none', borderRadius: '6px', fontWeight: 'bold' }}>
                     {t('shopPage.addToCart')}
                   </button>
-                  
-                  <div style={{ display: 'flex', gap: '2px' }}>
-                    <a 
-                      href="https://www.lazada.co.th/shop/bullport-th?path=index.htm&lang=en&pageTypeId=1" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      style={{ 
-                        flex: 1, 
-                        textAlign: 'center', 
-                        padding: '0px 2px', 
-                        fontSize: '1rem', 
-                        lineHeight: 1,
-                        backgroundColor: '#0f146d', 
-                        color: '#fff', 
-                        textDecoration: 'none', 
-                        borderRadius: '3px',
-                        fontWeight: 'bold',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center'
-                      }}
-                    >
-                      <img src="/lazada.png" alt="Lazada" style={{ height: '1.8em', marginRight: '2px', objectFit: 'contain' }} /> Lazada
-                    </a>
-                    <a 
-                      href="https://s.shopee.co.th/5AsKbTxjf6?share_channel_code=5" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      style={{ 
-                        flex: 1, 
-                        textAlign: 'center', 
-                        padding: '0px 2px', 
-                        fontSize: '1rem', 
-                        lineHeight: 1,
-                        backgroundColor: '#ffffff', 
-                        color: '#ee4d2d', 
-                        textDecoration: 'none', 
-                        borderRadius: '3px',
-                        fontWeight: 'bold',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        border: '1px solid #ee4d2d'
-                      }}
-                    >
-                      <img src="/shopee.png" alt="Shopee" style={{ height: '2.2em', marginRight: '2px', objectFit: 'contain' }} /> Shopee
-                    </a>
-                  </div>
                 </div>
               </div>
             );

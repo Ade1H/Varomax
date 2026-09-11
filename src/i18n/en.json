@@ -1,13 +1,13 @@
 {
 "reseller": {
-    "title": "Reseller",
-    "subtitle": "Sign in or become a customer below",
-    "signInTitle": "Sign In to Reseller Portal",
+    "title": "Retailer Portal",
+  
+    "signInTitle": "Already a Varomax retailer? Sign in below",
     "emailLabel": "Email Address",
     "passwordLabel": "Password",
     "signInBtn": "Sign In",
     "signingIn": "Signing in...",
-    "option2": "Want to be customer",
+    "option2": "Apply to Become a Retailer",
     "loadingPortal": "Loading portal...",
     "companyPortal": "Company Business Portal",
     "privatePortal": "Private Customer Portal",
@@ -170,6 +170,14 @@
       {
         "title": "60-Day Money-Back",
         "desc": "Not satisfied? A full refund within 60 days, with no awkward questions."
+      },
+      {
+        "title": "No Subscription Required",
+        "desc": "Buy when it suits you. No recurring charges, no automatic deliveries, and no subscription to cancel."
+      },
+      {
+        "title": "Secure Checkout",
+        "desc": "Pay securely with Stripe. Your payment details are encrypted and processed through Stripe’s trusted payment platform."
       }
     ]
   },
@@ -188,7 +196,8 @@
     "checkout": "Checkout",
     "vsViagra": "Varomax vs Viagra",
     "cart": "Cart",
-    "reseller": "Reseller"
+    "reseller": "Reseller",
+    "portal": "Portal"
   },
  "contact": {
     "title": "Contact Us",
@@ -324,7 +333,9 @@
   "offerText": "Buy 2, get 1 free on every product.",
   "discreetText": "Discreet packaging!",
   "addToCart": "Add to cart",
-  "price": "Price"
+  "price": "Price",
+  "shopeeLazadaText": "We are also on Shopee and Lazada"
+  
 
   },
   "products": {

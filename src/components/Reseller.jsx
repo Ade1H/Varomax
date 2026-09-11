@@ -213,9 +213,9 @@ export default function Reseller({ onLoginSuccess }) {
       <h2 style={{ fontSize: '28px', marginBottom: '0.5rem', color: '#000000', fontWeight: 700 }}>
         {t('reseller.title')}
       </h2>
-      <p style={{ fontSize: '15px', color: '#555', marginBottom: '2rem', lineHeight: '1.5' }}>
+      {/* <p style={{ fontSize: '15px', color: '#555', marginBottom: '2rem', lineHeight: '1.5' }}>
         {t('reseller.subtitle')}
-      </p>
+      </p> */}
 
       <div style={{ textAlign: 'left', background: '#fafafa', padding: '1.5rem', borderRadius: '10px', border: '1px solid #e0e0e0', marginBottom: '1.5rem' }}>
         <h3 style={{ fontSize: '18px', fontWeight: 600, color: '#000000', marginBottom: '1rem' }}>
@@ -295,7 +295,17 @@ export default function Reseller({ onLoginSuccess }) {
             {loadingLogin ? t('reseller.signingIn') : t('reseller.signInBtn')}
           </button>
         </form>
+        <div style={{ textAlign: 'right', marginTop: '-6px' }}>
+  <button
+    type="button"
+    onClick={() => navigate('/forgot-password')}
+    style={{ background: 'none', border: 'none', color: '#0d7a5f', fontSize: 13, cursor: 'pointer', textDecoration: 'underline' }}
+  >
+    {t('reseller.forgotPassword', { defaultValue: 'Forgot password?' })}
+  </button>
+</div>
       </div>
+      
 
       <div>
         <button 

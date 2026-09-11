@@ -77,21 +77,29 @@ export default function Navbar({ cartCount }) {
           {t('nav.vsViagra')}
         </NavLink>
         
+        {/* <NavLink 
+          to="/portal" 
+          className={({ isActive }) => isActive ? 'active' : ''}
+          onClick={closeMenu}
+        >
+          {t('nav.portal')}
+        </NavLink> */}
+        
         <NavLink 
-          to="/shop" 
+          to="/" 
           className={({ isActive }) => isActive ? 'active' : ''}
           onClick={closeMenu}
         >
           {t('nav.shop')}
         </NavLink>
         
-        <NavLink 
+        {/* <NavLink 
           to="/checkout" 
           className={({ isActive }) => isActive ? 'active' : ''}
           onClick={closeMenu}
         >
           {t('nav.checkout')}
-        </NavLink>
+        </NavLink> */}
         
         <NavLink 
           to="/about" 
@@ -120,21 +128,25 @@ export default function Navbar({ cartCount }) {
 
       {/* Right Side Actions (Cart & Language Switcher) */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-        <button
-          onClick={toggleLanguage}
-          style={{
-            background: 'transparent',
-            border: '1px solid #ccc',
-            color: '#333',
-            padding: '6px 10px',
-            borderRadius: '6px',
-            cursor: 'pointer',
-            fontWeight: 600,
-            fontSize: '14px'
-          }}
-        >
-          {i18n.language === 'th' ? '🇹🇭 TH' : '🇬🇧 EN'}
-        </button>
+<button
+  onClick={toggleLanguage}
+  style={{
+    background: 'transparent',
+    border: 'none',
+    padding: '8px 10px',
+    borderRadius: '6px',
+    cursor: 'pointer',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: '8px',
+    fontSize: '32px',
+    lineHeight: 1
+  }}
+>
+  <span style={{ opacity: i18n.language === 'th' ? 1 : 0.4, transition: 'opacity 0.2s' }}>🇹🇭</span>
+  <span style={{ opacity: i18n.language === 'en' ? 1 : 0.4, transition: 'opacity 0.2s' }}>🇬🇧</span>
+</button>
 
         <NavLink 
           to="/Cart" 
