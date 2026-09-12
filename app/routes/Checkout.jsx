@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom'; // 1. Added import
+import { useNavigate } from 'react-router';
 
-export default function Checkout({ cart, totalPrice, onBack, onComplete }) {
+export default function Checkout({ cart = [], totalPrice = 0, onBack, onComplete }) {
   const { t } = useTranslation();
-  const navigate = useNavigate(); // 2. Initialize hook
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     name: '',
@@ -13,7 +13,7 @@ export default function Checkout({ cart, totalPrice, onBack, onComplete }) {
     address: '',
     city: '',
     zip: '',
-    country: 'TH' // Default country set to Thailand
+    country: 'TH'
   });
 
   const countries = [
@@ -31,7 +31,9 @@ export default function Checkout({ cart, totalPrice, onBack, onComplete }) {
       return;
     }
 
-    onComplete(formData);
+    if (onComplete) {
+      onComplete(formData);
+    }
 
     try {
       const userId = localStorage.getItem('user_id') || localStorage.getItem('auth_token');
@@ -75,11 +77,13 @@ export default function Checkout({ cart, totalPrice, onBack, onComplete }) {
         boxShadow: '0 4px 20px rgba(0,0,0,0.1)'
       }}
     >
-      {/* 3. Updated button handler to trigger routing */}
       <button 
         onClick={() => {
-          if (onBack) onBack(); // Keeps optional state cleanup if needed
-          navigate('/shop');  // Adjust path to match your shop route (e.g., '/shop' or '/')
+          if (onBack) {
+            onBack();
+          } else {
+            navigate('/shop');
+          }
         }} 
         style={{ 
           marginBottom: '1.5rem', 

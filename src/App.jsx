@@ -17,7 +17,7 @@ import ForgotPassword from './components/ForgotPassword';
 import ResetPassword from './components/ResetPassword';
 import AdminGate from './components/AdminGate';
 
-import { products } from './data/products';
+import { products } from '../app/data/products';
 
 export default function App() {
   const { t } = useTranslation();

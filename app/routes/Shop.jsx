@@ -1,8 +1,28 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { products as productsData } from '../data/products'; // Adjust path if needed
 
-export default function Shop({ onAddToCart, products = [] }) {
+export default function Shop() {
   const { t } = useTranslation();
+  const products = productsData;
+
+  const handleAddToCart = (product) => {
+    const savedCart = localStorage.getItem('varomax_cart');
+    const cart = savedCart ? JSON.parse(savedCart) : [];
+    
+    const existing = cart.find(item => item.id === product.id);
+    let updatedCart;
+    if (existing) {
+      updatedCart = cart.map(item =>
+        item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+      );
+    } else {
+      updatedCart = [...cart, { ...product, quantity: 1 }];
+    }
+    
+    localStorage.setItem('varomax_cart', JSON.stringify(updatedCart));
+    window.dispatchEvent(new Event('cartUpdated'));
+  };
 
   return (
     <main id="shop" className="product-section" style={{ padding: '2rem 0' }}>
@@ -38,8 +58,8 @@ export default function Shop({ onAddToCart, products = [] }) {
           marginInline: 'auto'
         }}>
           <p style={{ margin: 0, fontSize: '1rem', fontWeight: 600, color: '#333' }}>
-  {t('shopPage.shopeeLazadaText')}
-</p>
+            {t('shopPage.shopeeLazadaText')}
+          </p>
           <div style={{ display: 'flex', gap: '12px', width: '100%', maxWidth: '320px' }}>
             <a 
               href="https://www.lazada.co.th/shop/bullport-th?path=index.htm&lang=en&pageTypeId=1" 
@@ -125,7 +145,7 @@ export default function Shop({ onAddToCart, products = [] }) {
                 )}
 
                 <div className="product-card-buttons" style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '8px', padding: '0px' }}>
-                  <button className="btn-add" onClick={() => onAddToCart(product)} style={{ width: '100%', padding: '10px', fontSize: '0.95rem', cursor: 'pointer', background: '#0d7a5f', color: '#fff', border: 'none', borderRadius: '6px', fontWeight: 'bold' }}>
+                  <button className="btn-add" onClick={() => handleAddToCart(product)} style={{ width: '100%', padding: '10px', fontSize: '0.95rem', cursor: 'pointer', background: '#0d7a5f', color: '#fff', border: 'none', borderRadius: '6px', fontWeight: 'bold' }}>
                     {t('shopPage.addToCart')}
                   </button>
                 </div>

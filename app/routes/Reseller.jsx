@@ -11,14 +11,17 @@ export default function Reseller({ onLoginSuccess }) {
   const [loginError, setLoginError] = useState(null);
   const [loadingLogin, setLoadingLogin] = useState(false);
 
+  const [token, setToken] = useState(null);
   const [dashboardData, setDashboardData] = useState(null);
   const [loadingDashboard, setLoadingDashboard] = useState(true);
   const [dashboardError, setDashboardError] = useState(null);
 
-  const token = localStorage.getItem('auth_token');
-
+  // Safely read token inside useEffect after mounting to prevent SSR localStorage errors
   useEffect(() => {
-    if (!token) {
+    const savedToken = typeof window !== 'undefined' ? localStorage.getItem('auth_token') : null;
+    setToken(savedToken);
+
+    if (!savedToken) {
       setLoadingDashboard(false);
       return;
     }
@@ -28,7 +31,7 @@ export default function Reseller({ onLoginSuccess }) {
         const response = await fetch('https://varomax.nu/api/dashboard.php', {
           method: 'GET',
           headers: {
-            'Authorization': `Bearer ${token}`,
+            'Authorization': `Bearer ${savedToken}`,
             'Content-Type': 'application/json',
           },
         });
@@ -48,7 +51,7 @@ export default function Reseller({ onLoginSuccess }) {
     };
 
     fetchDashboardData();
-  }, [token]);
+  }, []);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -213,9 +216,6 @@ export default function Reseller({ onLoginSuccess }) {
       <h2 style={{ fontSize: '28px', marginBottom: '0.5rem', color: '#000000', fontWeight: 700 }}>
         {t('reseller.title')}
       </h2>
-      {/* <p style={{ fontSize: '15px', color: '#555', marginBottom: '2rem', lineHeight: '1.5' }}>
-        {t('reseller.subtitle')}
-      </p> */}
 
       <div style={{ textAlign: 'left', background: '#fafafa', padding: '1.5rem', borderRadius: '10px', border: '1px solid #e0e0e0', marginBottom: '1.5rem' }}>
         <h3 style={{ fontSize: '18px', fontWeight: 600, color: '#000000', marginBottom: '1rem' }}>
@@ -296,17 +296,16 @@ export default function Reseller({ onLoginSuccess }) {
           </button>
         </form>
         <div style={{ textAlign: 'right', marginTop: '-6px' }}>
-  <button
-    type="button"
-    onClick={() => navigate('/forgot-password')}
-    style={{ background: 'none', border: 'none', color: '#0d7a5f', fontSize: 13, cursor: 'pointer', textDecoration: 'underline' }}
-  >
-    {t('reseller.forgotPassword', { defaultValue: 'Forgot password?' })}
-  </button>
-</div>
+          <button
+            type="button"
+            onClick={() => navigate('/forgot-password')}
+            style={{ background: 'none', border: 'none', color: '#0d7a5f', fontSize: 13, cursor: 'pointer', textDecoration: 'underline', marginTop:'10px' }}
+          >
+            {t('reseller.forgotPassword', { defaultValue: 'Forgot password?' })}
+          </button>
+        </div>
       </div>
       
-
       <div>
         <button 
           onClick={() => navigate('/contact')}

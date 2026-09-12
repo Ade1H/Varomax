@@ -1,0 +1,1 @@
+var e=[{id:1,name:`Varomax`,packSize:`10 capsules`,price:990,category:`Dietary Supplements`,stripeLink:`https://buy.stripe.com/aFafZgfnd40qc6LemIfEk01`,image:`/varomax-box.webp`},{id:2,name:`Varomax`,packSize:`4 capsules`,price:500,category:`Dietary Supplements`,stripeLink:`https://buy.stripe.com/aFafZgfnd40qc6LemIfEk01`,image:`/varomax-box.webp`}];export{e as t};

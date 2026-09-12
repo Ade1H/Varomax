@@ -1,11 +1,38 @@
-import { NavLink } from 'react-router-dom';
-import { useState } from 'react';
+import { NavLink } from 'react-router';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import './Navbar.css';
 
-export default function Navbar({ cartCount }) {
+export default function Navbar({ cartCount: propCartCount }) {
   const { t, i18n } = useTranslation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [internalCartCount, setInternalCartCount] = useState(0);
+
+  useEffect(() => {
+    const updateCartCount = () => {
+      try {
+        const savedCart = localStorage.getItem('varomax_cart');
+        const cart = savedCart ? JSON.parse(savedCart) : [];
+        const count = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
+        setInternalCartCount(count);
+      } catch (e) {
+        console.error('Failed to load cart count:', e);
+        setInternalCartCount(0);
+      }
+    };
+
+    updateCartCount();
+
+    window.addEventListener('storage', updateCartCount);
+    window.addEventListener('cartUpdated', updateCartCount);
+
+    return () => {
+      window.removeEventListener('storage', updateCartCount);
+      window.removeEventListener('cartUpdated', updateCartCount);
+    };
+  }, []);
+
+  const cartCount = propCartCount !== undefined ? propCartCount : internalCartCount;
 
   const toggleMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -62,7 +89,7 @@ export default function Navbar({ cartCount }) {
       {/* Navigation Links */}
       <div className={`nav-links ${isMobileMenuOpen ? 'open' : ''}`}>
         <NavLink 
-          to="/Home" 
+          to="/" 
           className={({ isActive }) => isActive ? 'active' : ''}
           onClick={closeMenu}
         >
@@ -77,29 +104,13 @@ export default function Navbar({ cartCount }) {
           {t('nav.vsViagra')}
         </NavLink>
         
-        {/* <NavLink 
-          to="/portal" 
-          className={({ isActive }) => isActive ? 'active' : ''}
-          onClick={closeMenu}
-        >
-          {t('nav.portal')}
-        </NavLink> */}
-        
         <NavLink 
-          to="/" 
+          to="/shop" 
           className={({ isActive }) => isActive ? 'active' : ''}
           onClick={closeMenu}
         >
           {t('nav.shop')}
         </NavLink>
-        
-        {/* <NavLink 
-          to="/checkout" 
-          className={({ isActive }) => isActive ? 'active' : ''}
-          onClick={closeMenu}
-        >
-          {t('nav.checkout')}
-        </NavLink> */}
         
         <NavLink 
           to="/about" 
@@ -128,25 +139,25 @@ export default function Navbar({ cartCount }) {
 
       {/* Right Side Actions (Cart & Language Switcher) */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-<button
-  onClick={toggleLanguage}
-  style={{
-    background: 'transparent',
-    border: 'none',
-    padding: '8px 10px',
-    borderRadius: '6px',
-    cursor: 'pointer',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    gap: '8px',
-    fontSize: '32px',
-    lineHeight: 1
-  }}
->
-  <span style={{ opacity: i18n.language === 'th' ? 1 : 0.4, transition: 'opacity 0.2s' }}>🇹🇭</span>
-  <span style={{ opacity: i18n.language === 'en' ? 1 : 0.4, transition: 'opacity 0.2s' }}>🇬🇧</span>
-</button>
+        <button
+          onClick={toggleLanguage}
+          style={{
+            background: 'transparent',
+            border: 'none',
+            padding: '8px 10px',
+            borderRadius: '6px',
+            cursor: 'pointer',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '8px',
+            fontSize: '32px',
+            lineHeight: 1
+          }}
+        >
+          <span style={{ opacity: i18n.language === 'th' ? 1 : 0.4, transition: 'opacity 0.2s' }}>🇹🇭</span>
+          <span style={{ opacity: i18n.language === 'en' ? 1 : 0.4, transition: 'opacity 0.2s' }}>🇬🇧</span>
+        </button>
 
         <NavLink 
           to="/Cart" 

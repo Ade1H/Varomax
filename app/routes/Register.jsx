@@ -1,6 +1,15 @@
 import React, { useState } from 'react';
+import AdminGate from '../components/AdminGate'; // Adjust path if needed
 
-export default function Register() {
+export default function RegisterRoute() {
+  return (
+    <AdminGate>
+      <RegisterContent />
+    </AdminGate>
+  );
+}
+
+function RegisterContent() {
   const [formData, setFormData] = useState({
     company_name: '',
     contact_person: '',
@@ -76,8 +85,6 @@ export default function Register() {
         throw new Error(data.error || 'Failed to register reseller');
       }
 
-      // ✅ Do NOT store token or trigger any redirect.
-      // Registration just creates the account; the reseller logs in separately.
       setSuccess(true);
     } catch (err) {
       setError(err.message);
@@ -288,12 +295,6 @@ export default function Register() {
             type="submit"
             disabled={loading}
             style={{ ...styles.button, ...(loading ? styles.buttonDisabled : {}) }}
-            onMouseEnter={(e) =>
-              !loading && (e.currentTarget.style.background = '#0a5f49')
-            }
-            onMouseLeave={(e) =>
-              !loading && (e.currentTarget.style.background = '#0d7a5f')
-            }
           >
             {loading ? 'Registering...' : 'Register Reseller Company'}
           </button>
@@ -302,8 +303,6 @@ export default function Register() {
     </div>
   );
 }
-
-/* ---------- Small helper components ---------- */
 
 function SectionTitle({ children }) {
   return (
@@ -325,8 +324,6 @@ function Field({ label, required, hint, children }) {
     </div>
   );
 }
-
-/* ---------- Inline styles ---------- */
 
 const styles = {
   page: {
@@ -421,7 +418,6 @@ const styles = {
     borderRadius: '8px',
     outline: 'none',
     boxSizing: 'border-box',
-    transition: 'border-color 0.15s ease, box-shadow 0.15s ease',
   },
   row2: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' },
   row3: { display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1rem' },
@@ -435,7 +431,6 @@ const styles = {
     border: 'none',
     borderRadius: '10px',
     cursor: 'pointer',
-    transition: 'background 0.15s ease',
     boxShadow: '0 4px 12px rgba(13, 122, 95, 0.25)',
   },
   buttonDisabled: { opacity: 0.6, cursor: 'not-allowed', boxShadow: 'none' },

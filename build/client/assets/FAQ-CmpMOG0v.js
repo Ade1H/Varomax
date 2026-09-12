@@ -1,0 +1,1 @@
+import{A as e,t}from"./jsx-runtime-DoNfas4v.js";var n=t(),r=e(function(){return(0,n.jsx)(`section`,{id:`faq`,style:{padding:`2rem`}})});export{r as default};
