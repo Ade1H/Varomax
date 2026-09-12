@@ -2,6 +2,23 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
+export function meta() {
+  return [
+    {
+      title: "Reseller & Partner Portal | Varomax",
+    },
+    {
+      name: "description",
+      content:
+        "Access the Varomax reseller and partner portal to track company orders, volume purchases, and account details.",
+    },
+    {
+      name: "robots",
+      content: "noindex, follow",
+    },
+  ];
+}
+
 export default function Reseller({ onLoginSuccess }) {
   const { t } = useTranslation();
   const navigate = useNavigate();

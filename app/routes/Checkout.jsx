@@ -2,6 +2,23 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
 
+export function meta() {
+  return [
+    {
+      title: "Secure Checkout | Varomax",
+    },
+    {
+      name: "description",
+      content:
+        "Complete your purchase securely on the Varomax platform with Stripe payment processing.",
+    },
+    {
+      name: "robots",
+      content: "noindex, follow",
+    },
+  ];
+}
+
 export default function Checkout({ cart = [], totalPrice = 0, onBack, onComplete }) {
   const { t } = useTranslation();
   const navigate = useNavigate();

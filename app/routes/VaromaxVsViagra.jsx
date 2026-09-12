@@ -1,6 +1,19 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+export function meta() {
+  return [
+    {
+      title: "Varomax vs. Viagra | Compare Effectiveness, Safety & Benefits",
+    },
+    {
+      name: "description",
+      content:
+        "Compare Varomax and Viagra side by side. Explore key differences in ingredients, efficacy, side effects, and natural health advantages.",
+    },
+  ];
+}
+
 export default function ComparePage() {
   const { t } = useTranslation();
   const [activeFaq, setActiveFaq] = useState(null);
@@ -299,19 +312,6 @@ export default function ComparePage() {
             </div>
           ))}
         </section>
-
-        {/* Footer Disclaimer */}
-        {/* <footer style={{
-          fontSize: '0.8rem',
-          color: '#6c757d',
-          textAlign: 'center',
-          borderTop: '1px solid #e9ecef',
-          paddingTop: '1.5rem',
-          lineHeight: '1.6'
-        }}>
-          <p>{t('vsViagraPage.footer.text1')}</p>
-          <p style={{ marginTop: '0.5rem' }}>{t('vsViagraPage.footer.text2')}</p>
-        </footer> */}
       </div>
     </div>
   );

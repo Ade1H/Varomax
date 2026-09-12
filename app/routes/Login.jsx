@@ -1,5 +1,22 @@
 import React, { useState } from 'react';
 
+export function meta() {
+  return [
+    {
+      title: "Sign In | Varomax",
+    },
+    {
+      name: "description",
+      content:
+        "Sign in to your Varomax account to access your portal, manage orders, and view account details.",
+    },
+    {
+      name: "robots",
+      content: "noindex, follow",
+    },
+  ];
+}
+
 export default function Login({ onLoginSuccess, onSwitchToRegister }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

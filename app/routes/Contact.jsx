@@ -1,6 +1,23 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+export function meta() {
+  return [
+    {
+      title: "Contact Us | Varomax Support & Reseller Inquiries",
+    },
+    {
+      name: "description",
+      content:
+        "Get in touch with the Varomax team for support, product inquiries, or reseller partnership opportunities.",
+    },
+    {
+      name: "robots",
+      content: "index, follow",
+    },
+  ];
+}
+
 export default function Contact() {
   const { t } = useTranslation();
   const [formData, setFormData] = useState({

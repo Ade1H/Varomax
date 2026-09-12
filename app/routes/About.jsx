@@ -2,6 +2,40 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import './VaromaxAbout.css';
 
+export function meta() {
+  return [
+    {
+      title: "About Varomax | Our Story & Quality Standards",
+    },
+    {
+      name: "description",
+      content:
+        "Learn about Varomax, made in Thailand, and our approach to herbal ingredients, transparency, and quality standards.",
+    },
+    {
+      property: "og:title",
+      content: "About Varomax | Our Story & Quality Standards",
+    },
+    {
+      property: "og:description",
+      content:
+        "Learn about Varomax, made in Thailand, and our approach to herbal ingredients, transparency, and quality standards.",
+    },
+    {
+      property: "og:type",
+      content: "website",
+    },
+    {
+      property: "og:image",
+      content: "https://varomax.nu/back.jpeg",
+    },
+    {
+      name: "robots",
+      content: "index, follow",
+    },
+  ];
+}
+
 const VaromaxAbout = () => {
   const { t } = useTranslation();
 

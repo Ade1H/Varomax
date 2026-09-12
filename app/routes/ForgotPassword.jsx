@@ -1,6 +1,23 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+export function meta() {
+  return [
+    {
+      title: "Reset Password | Varomax",
+    },
+    {
+      name: "description",
+      content:
+        "Request a password reset link for your Varomax account to regain secure access.",
+    },
+    {
+      name: "robots",
+      content: "noindex, follow",
+    },
+  ];
+}
+
 export default function ForgotPassword() {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');

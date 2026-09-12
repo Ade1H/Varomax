@@ -2,6 +2,19 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { products as productsData } from '../data/products'; // Adjust path if needed
 
+export function meta() {
+  return [
+    {
+      title: "Shop Varomax Products | High-Quality Formulations",
+    },
+    {
+      name: "description",
+      content:
+        "Browse and purchase official Varomax products. Enjoy premium quality, secure checkout, and fast global delivery options.",
+    },
+  ];
+}
+
 export default function Shop() {
   const { t } = useTranslation();
   const products = productsData;
@@ -27,7 +40,7 @@ export default function Shop() {
   return (
     <main id="shop" className="product-section" style={{ padding: '2rem 0' }}>
       <div className="container">
-        <h2 style={{ textAlign: 'center', marginBottom: '0.25rem', fontSize: '2.5rem' }}>
+        <h2 style={{ textAlign: 'center', marginBottom: '0.25rem', fontSize: '2.5rem', color: '#000000' }}>
           {t('shopPage.title')}
         </h2>
         <p className="offer-text" style={{ textAlign: 'center', marginBottom: '1rem', color: '#0e0d0dff' }}>

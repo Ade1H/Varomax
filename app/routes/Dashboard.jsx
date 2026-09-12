@@ -1,5 +1,22 @@
 import React, { useEffect, useState } from 'react';
 
+export function meta() {
+  return [
+    {
+      title: "Client Portal & Dashboard | Varomax",
+    },
+    {
+      name: "description",
+      content:
+        "Access your Varomax dashboard to view purchase history, manage account settings, and track order fulfillment.",
+    },
+    {
+      name: "robots",
+      content: "noindex, follow",
+    },
+  ];
+}
+
 export default function Dashboard() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);

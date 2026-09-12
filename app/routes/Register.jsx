@@ -1,6 +1,23 @@
 import React, { useState } from 'react';
 import AdminGate from '../components/AdminGate'; // Adjust path if needed
 
+export function meta() {
+  return [
+    {
+      title: "Register Reseller | Varomax Portal",
+    },
+    {
+      name: "description",
+      content:
+        "Register a new reseller company to join the Varomax network.",
+    },
+    {
+      name: "robots",
+      content: "noindex, follow",
+    },
+  ];
+}
+
 export default function RegisterRoute() {
   return (
     <AdminGate>

@@ -4,6 +4,23 @@ import { useTranslation } from 'react-i18next';
 import { products } from '../data/products';
 import './VaromaxLanding.css';
 
+export function meta() {
+  return [
+    {
+      title: "Varomax | Premium Herbal Sublingual Troches for Performance & Stamina",
+    },
+    {
+      name: "description",
+      content:
+        "Discover Varomax—fast-acting, all-natural herbal sublingual troches designed for performance, stamina, and vitality. No prescription required.",
+    },
+    {
+      name: "robots",
+      content: "index, follow",
+    },
+  ];
+}
+
 const VaromaxLanding = ({ onAddToCart }) => {  // 👈 ADDED onAddToCart prop
   const { t } = useTranslation();
   const navigate = useNavigate();

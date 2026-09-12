@@ -1,23 +1,55 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { useTranslation } from 'react-i18next';
+
+export function meta() {
+  return [
+    { title: "Your Shopping Cart | Varomax" },
+    { name: "description", content: "Review your selected herbal products and proceed to checkout." },
+    { name: "robots", content: "noindex, follow" },
+  ];
+}
 
 export default function Cart() {
   const { t } = useTranslation();
   const [cart, setCart] = useState([]);
 
-  // Load cart from localStorage on mount
-  useEffect(() => {
-    const savedCart = localStorage.getItem('Varomax_cart');
-    if (savedCart) {
-      setCart(JSON.parse(savedCart));
+  // Load from localStorage using the correct lowercase key 'varomax_cart'
+  const loadCart = () => {
+    try {
+      const savedCart = localStorage.getItem('varomax_cart');
+      if (savedCart) {
+        setCart(JSON.parse(savedCart));
+      } else {
+        setCart([]);
+      }
+    } catch (err) {
+      console.error('Failed to read cart:', err);
+      setCart([]);
     }
+  };
+
+  useEffect(() => {
+    loadCart();
+
+    const handleStorageChange = () => loadCart();
+    window.addEventListener('storage', handleStorageChange);
+    window.addEventListener('cartUpdated', handleStorageChange);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+      window.removeEventListener('cartUpdated', handleStorageChange);
+    };
   }, []);
 
-  // Helper to sync state changes back to localStorage
   const updateCart = (newCart) => {
     setCart(newCart);
-    localStorage.setItem('Varomax_cart', JSON.stringify(newCart));
+    try {
+      localStorage.setItem('varomax_cart', JSON.stringify(newCart));
+      window.dispatchEvent(new Event('cartUpdated'));
+    } catch (err) {
+      console.error('Failed to save cart:', err);
+    }
   };
 
   const handleAddToCart = (product) => {
@@ -48,8 +80,8 @@ export default function Cart() {
     updateCart(updatedCart);
   };
 
-  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-  const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  const totalItems = cart.reduce((sum, item) => sum + (Number(item.quantity) || 0), 0);
+  const totalPrice = cart.reduce((sum, item) => sum + ((Number(item.price) || 0) * (Number(item.quantity) || 0)), 0);
 
   return (
     <div 
@@ -112,7 +144,7 @@ export default function Cart() {
                     color: 'var(--text-h)',
                     flex: '1 1 150px'
                   }}>
-                    {t(`products.${productKey}.name`)} ({t(`products.${productKey}.packSize`)})
+                    {t(`products.${productKey}.name`, { defaultValue: item.name || 'Product' })} ({t(`products.${productKey}.packSize`, { defaultValue: item.packSize || '' })})
                   </span>
 
                   <div style={{
@@ -166,7 +198,7 @@ export default function Cart() {
                       textAlign: 'right',
                       fontSize: '16px'
                     }}>
-                      ฿{item.price * item.quantity}
+                      ฿{Number(item.price) * Number(item.quantity)}
                     </span>
 
                     <button 
